@@ -1,0 +1,308 @@
+
+# 1 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.c"
+
+# 5 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h"
+typedef struct
+{
+volatile unsigned char* porta_pino;
+volatile unsigned char* latch_pino;
+unsigned char bit_pino;
+}
+InfoPino;
+
+typedef struct
+{
+volatile unsigned char* latch;
+volatile unsigned char* tris;
+}
+InfoLatch;
+
+typedef struct
+{
+InfoPino pinoE;
+InfoPino pinoRW;
+InfoPino pinoRS;
+InfoPino pinoCS1;
+InfoPino pinoCS2;
+InfoPino pinoRST;
+InfoLatch latchDADOS;
+}
+MCUConfig;
+
+MCUConfig pinos_display;
+
+# 54
+void InverterCores(void);
+void Ponto(unsigned char x,unsigned char y,unsigned char apaga);
+unsigned char NovoX(unsigned char x,unsigned char area,unsigned char apaga);
+void LimparDisplay(void);
+void InicializarDisplay(MCUConfig pinos);
+void Clock(void);
+unsigned char ClockComLeitura(void);
+void DesligarDisplay(void);
+void LigarDisplay(void);
+void EnviarDado(unsigned char dado,unsigned char area);
+unsigned char ReceberStatus(void);
+unsigned char LerDado(unsigned char area);
+void SelecionarArea(unsigned char area);
+void EnderecoX(unsigned char x,unsigned char area);
+void EnderecoY(unsigned char y,unsigned char area);
+void E(unsigned char e);
+void RW(unsigned char rw);
+void RS(unsigned char rs);
+void CS1(unsigned char cs1);
+void CS2(unsigned char cs2);
+void RST(unsigned char rst);
+
+# 1 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.c"
+;
+
+# 6 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\delays.h"
+void delay(unsigned long ms);
+void delayMicroseconds(unsigned long us);
+
+# 2 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.c"
+;
+
+# 7
+void InverterCores(void)
+{
+unsigned char leitura;
+unsigned char x, y;
+unsigned char area;
+for(area = 1; area < 3; area++)
+{
+for(x = 0; x < 8; x++)
+{
+EnderecoX(x, area);
+for(y = 0; y < 64; y++)
+{
+EnderecoY(y, area);
+leitura=LerDado(area);
+EnderecoY(y, area);
+EnviarDado(~leitura, area);
+}
+}
+}
+}
+
+# 35
+void Ponto(unsigned char x, unsigned char y, unsigned char cor)
+{
+unsigned char area;
+unsigned char pagina;
+if(y < 64)
+area = 1;
+else
+{
+y = y - 64;
+area = 2;
+}
+pagina = x >> 3;
+EnderecoX(pagina, area);
+x = ((pagina + 1) << 3) - x;
+EnderecoY(y, area);
+x = NovoX(x, area, cor);
+EnderecoY(y, area);
+EnviarDado(x, area);
+}
+
+# 63
+unsigned char NovoX(unsigned char x, unsigned char area, unsigned char cor)
+{
+unsigned char leitura;
+leitura = LerDado(area);
+return cor ? leitura |= (1 << (7 - x)) : leitura &= ~(1 << (7 - x));
+}
+
+# 73
+void LimparDisplay(void)
+{
+unsigned char x, y;
+for(x = 0; x < 8; x++)
+{
+EnderecoX(x, 3);
+for(y = 0; y < 64; y++)
+EnviarDado(0, 3);
+}
+}
+
+# 88
+void InicializarDisplay(MCUConfig pinos)
+{
+pinos_display = pinos;
+RST(0);
+RW(0);
+*pinos_display.latchDADOS.tris = 0x00;
+RST(1);
+delay(1);
+LigarDisplay();
+LimparDisplay();
+}
+
+# 103
+void Clock(void)
+{
+E(1);
+delayMicroseconds(2);
+E(0);
+delayMicroseconds(10);
+}
+
+# 115
+unsigned char ClockComLeitura(void)
+{
+unsigned char leitura;
+*pinos_display.latchDADOS.tris = 0xFF;
+RW(1);
+
+E(1);
+delayMicroseconds(2);
+E(0);
+delayMicroseconds(2);
+E(1);
+delayMicroseconds(5);
+leitura = *pinos_display.latchDADOS.latch;
+E(0);
+RW(0);
+*pinos_display.latchDADOS.tris = 0x00;
+delayMicroseconds(15);
+return leitura;
+}
+
+
+void DesligarDisplay(void)
+{
+SelecionarArea(3);
+RS(0);
+*pinos_display.latchDADOS.latch = 0b00111110;
+Clock();
+SelecionarArea(0);
+}
+
+# 148
+void LigarDisplay(void)
+{
+SelecionarArea(3);
+RS(0);
+*pinos_display.latchDADOS.latch = 0b00111111;
+Clock();
+SelecionarArea(0);
+}
+
+# 163
+void EnviarDado(unsigned char dado, unsigned char area)
+{
+SelecionarArea(area);
+RS(1);
+*pinos_display.latchDADOS.latch = dado;
+Clock();
+SelecionarArea(0);
+}
+
+# 176
+unsigned char ReceberStatus(void)
+{
+RS(0);
+return ClockComLeitura();
+}
+
+# 188
+unsigned char LerDado(unsigned char area)
+{
+unsigned char leitura;
+SelecionarArea(area);
+RS(1);
+leitura = ClockComLeitura();
+SelecionarArea(0);
+return leitura;
+}
+
+# 207
+void SelecionarArea(unsigned char area)
+{
+CS1(area == 1 || area == 3);
+CS2(area >= 2);
+}
+
+# 219
+void EnderecoX(unsigned char x, unsigned char area)
+{
+SelecionarArea(area);
+RS(0);
+*pinos_display.latchDADOS.latch = 0b10111000 | x;
+Clock();
+SelecionarArea(0);
+}
+
+# 234
+void EnderecoY(unsigned char y, unsigned char area)
+{
+SelecionarArea(area);
+RS(0);
+*pinos_display.latchDADOS.latch = 0b1000000 | y;
+Clock();
+SelecionarArea(0);
+}
+
+# 252
+void E(unsigned char e)
+{
+if(e)
+*pinos_display.pinoE.latch_pino |= (1 << pinos_display.pinoE.bit_pino);
+else
+*pinos_display.pinoE.latch_pino &= (~(1 << pinos_display.pinoE.bit_pino));
+*pinos_display.pinoE.porta_pino = *pinos_display.pinoE.latch_pino;
+}
+
+# 270
+void RW(unsigned char rw)
+{
+if(rw)
+*pinos_display.pinoRW.latch_pino |= (1 << pinos_display.pinoRW.bit_pino);
+else
+*pinos_display.pinoRW.latch_pino &= (~(1 << pinos_display.pinoRW.bit_pino));
+*pinos_display.pinoRW.porta_pino = *pinos_display.pinoRW.latch_pino;
+}
+
+# 288
+void RS(unsigned char rs)
+{
+if(rs)
+*pinos_display.pinoRS.latch_pino |= (1 << pinos_display.pinoRS.bit_pino);
+else
+*pinos_display.pinoRS.latch_pino &= (~(1 << pinos_display.pinoRS.bit_pino));
+*pinos_display.pinoRS.porta_pino = *pinos_display.pinoRS.latch_pino;
+}
+
+# 307
+void CS1(unsigned char cs1)
+{
+cs1 = !cs1;
+if(cs1)
+*pinos_display.pinoCS1.latch_pino |= (1 << pinos_display.pinoCS1.bit_pino);
+else
+*pinos_display.pinoCS1.latch_pino &= (~(1 << pinos_display.pinoCS1.bit_pino));
+*pinos_display.pinoCS1.porta_pino = *pinos_display.pinoCS1.latch_pino;
+}
+
+# 327
+void CS2(unsigned char cs2)
+{
+cs2 = !cs2;
+if(cs2)
+*pinos_display.pinoCS2.latch_pino |= (1 << pinos_display.pinoCS2.bit_pino);
+else
+*pinos_display.pinoCS2.latch_pino &= (~(1 << pinos_display.pinoCS2.bit_pino));
+*pinos_display.pinoCS2.porta_pino = *pinos_display.pinoCS2.latch_pino;
+}
+
+# 346
+void RST(unsigned char rst)
+{
+if(rst)
+*pinos_display.pinoRST.latch_pino |= (1 << pinos_display.pinoRST.bit_pino);
+else
+*pinos_display.pinoRST.latch_pino &= (~(1 << pinos_display.pinoRST.bit_pino));
+*pinos_display.pinoRST.porta_pino = *pinos_display.pinoRST.latch_pino;
+}

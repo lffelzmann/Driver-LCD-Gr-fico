@@ -1,0 +1,822 @@
+Version 3.2 HI-TECH Software Intermediate Code
+[s S1 `*Vuc 1 `*Vuc 1 `uc 1 ]
+[n S1 . porta_pino latch_pino bit_pino ]
+[s S2 `*Vuc 1 `*Vuc 1 ]
+[n S2 . latch tris ]
+[s S3 `S1 1 `S1 1 `S1 1 `S1 1 `S1 1 `S1 1 `S2 1 ]
+[n S3 . pinoE pinoRW pinoRS pinoCS1 pinoCS2 pinoRST latchDADOS ]
+"32 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _pinos_display `S3  1 e ]
+"67 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _EnderecoX `(v  0 ef2`uc`uc ]
+"68 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _EnderecoY `(v  0 ef2`uc`uc ]
+"65 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _LerDado `(uc  0 ef1`uc ]
+"63 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _EnviarDado `(v  0 ef2`uc`uc ]
+"56 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _NovoX `(uc  0 ef3`uc`uc`uc ]
+"74 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _RST `(v  0 ef1`uc ]
+"70 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _RW `(v  0 ef1`uc ]
+"6 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\delays.h
+[v _delay `(v  0 ef1`ul ]
+"62 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _LigarDisplay `(v  0 ef ]
+"69 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _E `(v  0 ef1`uc ]
+"7 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\delays.h
+[v _delayMicroseconds `(v  0 ef1`ul ]
+"66 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _SelecionarArea `(v  0 ef1`uc ]
+"71 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _RS `(v  0 ef1`uc ]
+"72 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _CS1 `(v  0 ef1`uc ]
+"73 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _CS2 `(v  0 ef1`uc ]
+[; ;lcd_grafico.h: 5: typedef struct
+[; ;lcd_grafico.h: 6: {
+[; ;lcd_grafico.h: 7: volatile unsigned char* porta_pino;
+[; ;lcd_grafico.h: 8: volatile unsigned char* latch_pino;
+[; ;lcd_grafico.h: 9: unsigned char bit_pino;
+[; ;lcd_grafico.h: 10: }
+[; ;lcd_grafico.h: 11: InfoPino;
+[; ;lcd_grafico.h: 13: typedef struct
+[; ;lcd_grafico.h: 14: {
+[; ;lcd_grafico.h: 15: volatile unsigned char* latch;
+[; ;lcd_grafico.h: 16: volatile unsigned char* tris;
+[; ;lcd_grafico.h: 17: }
+[; ;lcd_grafico.h: 18: InfoLatch;
+[; ;lcd_grafico.h: 20: typedef struct
+[; ;lcd_grafico.h: 21: {
+[; ;lcd_grafico.h: 22: InfoPino pinoE;
+[; ;lcd_grafico.h: 23: InfoPino pinoRW;
+[; ;lcd_grafico.h: 24: InfoPino pinoRS;
+[; ;lcd_grafico.h: 25: InfoPino pinoCS1;
+[; ;lcd_grafico.h: 26: InfoPino pinoCS2;
+[; ;lcd_grafico.h: 27: InfoPino pinoRST;
+[; ;lcd_grafico.h: 28: InfoLatch latchDADOS;
+[; ;lcd_grafico.h: 29: }
+[; ;lcd_grafico.h: 30: MCUConfig;
+[; ;lcd_grafico.h: 32: MCUConfig pinos_display;
+[; ;lcd_grafico.h: 54: void InverterCores(void);
+[; ;lcd_grafico.h: 55: void Ponto(unsigned char x,unsigned char y,unsigned char apaga);
+[; ;lcd_grafico.h: 56: unsigned char NovoX(unsigned char x,unsigned char area,unsigned char apaga);
+[; ;lcd_grafico.h: 57: void LimparDisplay(void);
+[; ;lcd_grafico.h: 58: void InicializarDisplay(MCUConfig pinos);
+[; ;lcd_grafico.h: 59: void Clock(void);
+[; ;lcd_grafico.h: 60: unsigned char ClockComLeitura(void);
+[; ;lcd_grafico.h: 61: void DesligarDisplay(void);
+[; ;lcd_grafico.h: 62: void LigarDisplay(void);
+[; ;lcd_grafico.h: 63: void EnviarDado(unsigned char dado,unsigned char area);
+[; ;lcd_grafico.h: 64: unsigned char ReceberStatus(void);
+[; ;lcd_grafico.h: 65: unsigned char LerDado(unsigned char area);
+[; ;lcd_grafico.h: 66: void SelecionarArea(unsigned char area);
+[; ;lcd_grafico.h: 67: void EnderecoX(unsigned char x,unsigned char area);
+[; ;lcd_grafico.h: 68: void EnderecoY(unsigned char y,unsigned char area);
+[; ;lcd_grafico.h: 69: void E(unsigned char e);
+[; ;lcd_grafico.h: 70: void RW(unsigned char rw);
+[; ;lcd_grafico.h: 71: void RS(unsigned char rs);
+[; ;lcd_grafico.h: 72: void CS1(unsigned char cs1);
+[; ;lcd_grafico.h: 73: void CS2(unsigned char cs2);
+[; ;lcd_grafico.h: 74: void RST(unsigned char rst);
+[; ;lcd_grafico.c: 1: ;
+[; ;delays.h: 6: void delay(unsigned long ms);
+[; ;delays.h: 7: void delayMicroseconds(unsigned long us);
+[; ;lcd_grafico.c: 2: ;
+"8 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.c
+[v _InverterCores `(v  1 ef ]
+{
+[; ;lcd_grafico.c: 7: void InverterCores(void)
+[; ;lcd_grafico.c: 8: {
+[e :U _InverterCores ]
+[f ]
+"9
+[v _leitura `uc  1 a ]
+"10
+[v _x `uc  1 a ]
+[v _y `uc  1 a ]
+"11
+[v _area `uc  1 a ]
+[; ;lcd_grafico.c: 9: unsigned char leitura;
+[; ;lcd_grafico.c: 10: unsigned char x, y;
+[; ;lcd_grafico.c: 11: unsigned char area;
+[; ;lcd_grafico.c: 12: for(area = 1; area < 3; area++)
+"12
+{
+[e = _area -> -> 1 `i `uc ]
+[e $ < -> _area `i -> 3 `i 5  ]
+[e $U 6  ]
+"13
+[e :U 5 ]
+[; ;lcd_grafico.c: 13: {
+{
+[; ;lcd_grafico.c: 14: for(x = 0; x < 8; x++)
+"14
+{
+[e = _x -> -> 0 `i `uc ]
+[e $ < -> _x `i -> 8 `i 8  ]
+[e $U 9  ]
+"15
+[e :U 8 ]
+[; ;lcd_grafico.c: 15: {
+{
+[; ;lcd_grafico.c: 16: EnderecoX(x, area);
+"16
+[e ( _EnderecoX (2 , _x _area ]
+[; ;lcd_grafico.c: 17: for(y = 0; y < 64; y++)
+"17
+{
+[e = _y -> -> 0 `i `uc ]
+[e $ < -> _y `i -> 64 `i 11  ]
+[e $U 12  ]
+"18
+[e :U 11 ]
+[; ;lcd_grafico.c: 18: {
+{
+[; ;lcd_grafico.c: 19: EnderecoY(y, area);
+"19
+[e ( _EnderecoY (2 , _y _area ]
+[; ;lcd_grafico.c: 20: leitura=LerDado(area);
+"20
+[e = _leitura ( _LerDado (1 _area ]
+[; ;lcd_grafico.c: 21: EnderecoY(y, area);
+"21
+[e ( _EnderecoY (2 , _y _area ]
+[; ;lcd_grafico.c: 22: EnviarDado(~leitura, area);
+"22
+[e ( _EnviarDado (2 , -> ~ -> _leitura `i `uc _area ]
+"23
+}
+"17
+[e ++ _y -> -> 1 `i `uc ]
+[e $ < -> _y `i -> 64 `i 11  ]
+[e :U 12 ]
+"23
+}
+"24
+}
+"14
+[e ++ _x -> -> 1 `i `uc ]
+[e $ < -> _x `i -> 8 `i 8  ]
+[e :U 9 ]
+"24
+}
+"25
+}
+"12
+[e ++ _area -> -> 1 `i `uc ]
+[e $ < -> _area `i -> 3 `i 5  ]
+[e :U 6 ]
+"25
+}
+[; ;lcd_grafico.c: 23: }
+[; ;lcd_grafico.c: 24: }
+[; ;lcd_grafico.c: 25: }
+[; ;lcd_grafico.c: 26: }
+"26
+[e :UE 4 ]
+}
+"36
+[v _Ponto `(v  1 ef3`uc`uc`uc ]
+{
+[; ;lcd_grafico.c: 35: void Ponto(unsigned char x, unsigned char y, unsigned char cor)
+[; ;lcd_grafico.c: 36: {
+[e :U _Ponto ]
+[v _x `uc  1 r1 ]
+[v _y `uc  1 r2 ]
+[v _cor `uc  1 r3 ]
+[f ]
+"37
+[v _area `uc  1 a ]
+"38
+[v _pagina `uc  1 a ]
+[; ;lcd_grafico.c: 37: unsigned char area;
+[; ;lcd_grafico.c: 38: unsigned char pagina;
+[; ;lcd_grafico.c: 39: if(y < 64)
+"39
+[e $ ! < -> _y `i -> 64 `i 15  ]
+[; ;lcd_grafico.c: 40: area = 1;
+"40
+[e = _area -> -> 1 `i `uc ]
+[e $U 16  ]
+"41
+[e :U 15 ]
+[; ;lcd_grafico.c: 41: else
+[; ;lcd_grafico.c: 42: {
+"42
+{
+[; ;lcd_grafico.c: 43: y = y - 64;
+"43
+[e = _y -> - -> _y `i -> 64 `i `uc ]
+[; ;lcd_grafico.c: 44: area = 2;
+"44
+[e = _area -> -> 2 `i `uc ]
+"45
+}
+[e :U 16 ]
+[; ;lcd_grafico.c: 45: }
+[; ;lcd_grafico.c: 46: pagina = x >> 3;
+"46
+[e = _pagina -> >> -> _x `i -> 3 `i `uc ]
+[; ;lcd_grafico.c: 47: EnderecoX(pagina, area);
+"47
+[e ( _EnderecoX (2 , _pagina _area ]
+[; ;lcd_grafico.c: 48: x = ((pagina + 1) << 3) - x;
+"48
+[e = _x -> - << + -> _pagina `i -> 1 `i -> 3 `i -> _x `i `uc ]
+[; ;lcd_grafico.c: 49: EnderecoY(y, area);
+"49
+[e ( _EnderecoY (2 , _y _area ]
+[; ;lcd_grafico.c: 50: x = NovoX(x, area, cor);
+"50
+[e = _x ( _NovoX (3 , , _x _area _cor ]
+[; ;lcd_grafico.c: 51: EnderecoY(y, area);
+"51
+[e ( _EnderecoY (2 , _y _area ]
+[; ;lcd_grafico.c: 52: EnviarDado(x, area);
+"52
+[e ( _EnviarDado (2 , _x _area ]
+[; ;lcd_grafico.c: 53: }
+"53
+[e :UE 14 ]
+}
+"64
+[v _NovoX `(uc  1 ef3`uc`uc`uc ]
+{
+[; ;lcd_grafico.c: 63: unsigned char NovoX(unsigned char x, unsigned char area, unsigned char cor)
+[; ;lcd_grafico.c: 64: {
+[e :U _NovoX ]
+[v _x `uc  1 r1 ]
+[v _area `uc  1 r2 ]
+[v _cor `uc  1 r3 ]
+[f ]
+"65
+[v _leitura `uc  1 a ]
+[; ;lcd_grafico.c: 65: unsigned char leitura;
+[; ;lcd_grafico.c: 66: leitura = LerDado(area);
+"66
+[e = _leitura ( _LerDado (1 _area ]
+[; ;lcd_grafico.c: 67: return cor ? leitura |= (1 << (7 - x)) : leitura &= ~(1 << (7 - x));
+"67
+[e ) -> ? != -> _cor `i -> -> -> 0 `i `uc `i : -> =| _leitura -> << -> 1 `i - -> 7 `i -> _x `i `uc `i -> =& _leitura -> ~ << -> 1 `i - -> 7 `i -> _x `i `uc `i `uc ]
+[e $UE 17  ]
+[; ;lcd_grafico.c: 68: }
+"68
+[e :UE 17 ]
+}
+"74
+[v _LimparDisplay `(v  1 ef ]
+{
+[; ;lcd_grafico.c: 73: void LimparDisplay(void)
+[; ;lcd_grafico.c: 74: {
+[e :U _LimparDisplay ]
+[f ]
+"75
+[v _x `uc  1 a ]
+[v _y `uc  1 a ]
+[; ;lcd_grafico.c: 75: unsigned char x, y;
+[; ;lcd_grafico.c: 76: for(x = 0; x < 8; x++)
+"76
+{
+[e = _x -> -> 0 `i `uc ]
+[e $ < -> _x `i -> 8 `i 19  ]
+[e $U 20  ]
+"77
+[e :U 19 ]
+[; ;lcd_grafico.c: 77: {
+{
+[; ;lcd_grafico.c: 78: EnderecoX(x, 3);
+"78
+[e ( _EnderecoX (2 , _x -> -> 3 `i `uc ]
+[; ;lcd_grafico.c: 79: for(y = 0; y < 64; y++)
+"79
+{
+[e = _y -> -> 0 `i `uc ]
+[e $ < -> _y `i -> 64 `i 22  ]
+[e $U 23  ]
+"80
+[e :U 22 ]
+[; ;lcd_grafico.c: 80: EnviarDado(0, 3);
+[e ( _EnviarDado (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+"79
+[e ++ _y -> -> 1 `i `uc ]
+[e $ < -> _y `i -> 64 `i 22  ]
+[e :U 23 ]
+"80
+}
+"81
+}
+"76
+[e ++ _x -> -> 1 `i `uc ]
+[e $ < -> _x `i -> 8 `i 19  ]
+[e :U 20 ]
+"81
+}
+[; ;lcd_grafico.c: 81: }
+[; ;lcd_grafico.c: 82: }
+"82
+[e :UE 18 ]
+}
+"89
+[v _InicializarDisplay `(v  1 ef1`S3 ]
+{
+[; ;lcd_grafico.c: 88: void InicializarDisplay(MCUConfig pinos)
+[; ;lcd_grafico.c: 89: {
+[e :U _InicializarDisplay ]
+[v _pinos `S3  1 r1 ]
+[f ]
+[; ;lcd_grafico.c: 90: pinos_display = pinos;
+"90
+[e = _pinos_display _pinos ]
+[; ;lcd_grafico.c: 91: RST(0);
+"91
+[e ( _RST (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 92: RW(0);
+"92
+[e ( _RW (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 93: *pinos_display.latchDADOS.tris = 0x00;
+"93
+[e = *U . . _pinos_display 6 1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 94: RST(1);
+"94
+[e ( _RST (1 -> -> 1 `i `uc ]
+[; ;lcd_grafico.c: 95: delay(1);
+"95
+[e ( _delay (1 -> -> -> 1 `i `l `ul ]
+[; ;lcd_grafico.c: 96: LigarDisplay();
+"96
+[e ( _LigarDisplay ..  ]
+[; ;lcd_grafico.c: 97: LimparDisplay();
+"97
+[e ( _LimparDisplay ..  ]
+[; ;lcd_grafico.c: 98: }
+"98
+[e :UE 25 ]
+}
+"104
+[v _Clock `(v  1 ef ]
+{
+[; ;lcd_grafico.c: 103: void Clock(void)
+[; ;lcd_grafico.c: 104: {
+[e :U _Clock ]
+[f ]
+[; ;lcd_grafico.c: 105: E(1);
+"105
+[e ( _E (1 -> -> 1 `i `uc ]
+[; ;lcd_grafico.c: 106: delayMicroseconds(2);
+"106
+[e ( _delayMicroseconds (1 -> -> -> 2 `i `l `ul ]
+[; ;lcd_grafico.c: 107: E(0);
+"107
+[e ( _E (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 108: delayMicroseconds(10);
+"108
+[e ( _delayMicroseconds (1 -> -> -> 10 `i `l `ul ]
+[; ;lcd_grafico.c: 109: }
+"109
+[e :UE 26 ]
+}
+"116
+[v _ClockComLeitura `(uc  1 ef ]
+{
+[; ;lcd_grafico.c: 115: unsigned char ClockComLeitura(void)
+[; ;lcd_grafico.c: 116: {
+[e :U _ClockComLeitura ]
+[f ]
+"117
+[v _leitura `uc  1 a ]
+[; ;lcd_grafico.c: 117: unsigned char leitura;
+[; ;lcd_grafico.c: 118: *pinos_display.latchDADOS.tris = 0xFF;
+"118
+[e = *U . . _pinos_display 6 1 -> -> 255 `i `uc ]
+[; ;lcd_grafico.c: 119: RW(1);
+"119
+[e ( _RW (1 -> -> 1 `i `uc ]
+[; ;lcd_grafico.c: 121: E(1);
+"121
+[e ( _E (1 -> -> 1 `i `uc ]
+[; ;lcd_grafico.c: 122: delayMicroseconds(2);
+"122
+[e ( _delayMicroseconds (1 -> -> -> 2 `i `l `ul ]
+[; ;lcd_grafico.c: 123: E(0);
+"123
+[e ( _E (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 124: delayMicroseconds(2);
+"124
+[e ( _delayMicroseconds (1 -> -> -> 2 `i `l `ul ]
+[; ;lcd_grafico.c: 125: E(1);
+"125
+[e ( _E (1 -> -> 1 `i `uc ]
+[; ;lcd_grafico.c: 126: delayMicroseconds(5);
+"126
+[e ( _delayMicroseconds (1 -> -> -> 5 `i `l `ul ]
+[; ;lcd_grafico.c: 127: leitura = *pinos_display.latchDADOS.latch;
+"127
+[e = _leitura *U . . _pinos_display 6 0 ]
+[; ;lcd_grafico.c: 128: E(0);
+"128
+[e ( _E (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 129: RW(0);
+"129
+[e ( _RW (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 130: *pinos_display.latchDADOS.tris = 0x00;
+"130
+[e = *U . . _pinos_display 6 1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 131: delayMicroseconds(15);
+"131
+[e ( _delayMicroseconds (1 -> -> -> 15 `i `l `ul ]
+[; ;lcd_grafico.c: 132: return leitura;
+"132
+[e ) _leitura ]
+[e $UE 27  ]
+[; ;lcd_grafico.c: 133: }
+"133
+[e :UE 27 ]
+}
+"137
+[v _DesligarDisplay `(v  1 ef ]
+{
+[; ;lcd_grafico.c: 136: void DesligarDisplay(void)
+[; ;lcd_grafico.c: 137: {
+[e :U _DesligarDisplay ]
+[f ]
+[; ;lcd_grafico.c: 138: SelecionarArea(3);
+"138
+[e ( _SelecionarArea (1 -> -> 3 `i `uc ]
+[; ;lcd_grafico.c: 139: RS(0);
+"139
+[e ( _RS (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 140: *pinos_display.latchDADOS.latch = 0b00111110;
+"140
+[e = *U . . _pinos_display 6 0 -> -> 62 `i `uc ]
+[; ;lcd_grafico.c: 141: Clock();
+"141
+[e ( _Clock ..  ]
+[; ;lcd_grafico.c: 142: SelecionarArea(0);
+"142
+[e ( _SelecionarArea (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 143: }
+"143
+[e :UE 28 ]
+}
+"149
+[v _LigarDisplay `(v  1 ef ]
+{
+[; ;lcd_grafico.c: 148: void LigarDisplay(void)
+[; ;lcd_grafico.c: 149: {
+[e :U _LigarDisplay ]
+[f ]
+[; ;lcd_grafico.c: 150: SelecionarArea(3);
+"150
+[e ( _SelecionarArea (1 -> -> 3 `i `uc ]
+[; ;lcd_grafico.c: 151: RS(0);
+"151
+[e ( _RS (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 152: *pinos_display.latchDADOS.latch = 0b00111111;
+"152
+[e = *U . . _pinos_display 6 0 -> -> 63 `i `uc ]
+[; ;lcd_grafico.c: 153: Clock();
+"153
+[e ( _Clock ..  ]
+[; ;lcd_grafico.c: 154: SelecionarArea(0);
+"154
+[e ( _SelecionarArea (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 155: }
+"155
+[e :UE 29 ]
+}
+"164
+[v _EnviarDado `(v  1 ef2`uc`uc ]
+{
+[; ;lcd_grafico.c: 163: void EnviarDado(unsigned char dado, unsigned char area)
+[; ;lcd_grafico.c: 164: {
+[e :U _EnviarDado ]
+[v _dado `uc  1 r1 ]
+[v _area `uc  1 r2 ]
+[f ]
+[; ;lcd_grafico.c: 165: SelecionarArea(area);
+"165
+[e ( _SelecionarArea (1 _area ]
+[; ;lcd_grafico.c: 166: RS(1);
+"166
+[e ( _RS (1 -> -> 1 `i `uc ]
+[; ;lcd_grafico.c: 167: *pinos_display.latchDADOS.latch = dado;
+"167
+[e = *U . . _pinos_display 6 0 _dado ]
+[; ;lcd_grafico.c: 168: Clock();
+"168
+[e ( _Clock ..  ]
+[; ;lcd_grafico.c: 169: SelecionarArea(0);
+"169
+[e ( _SelecionarArea (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 170: }
+"170
+[e :UE 30 ]
+}
+"177
+[v _ReceberStatus `(uc  1 ef ]
+{
+[; ;lcd_grafico.c: 176: unsigned char ReceberStatus(void)
+[; ;lcd_grafico.c: 177: {
+[e :U _ReceberStatus ]
+[f ]
+[; ;lcd_grafico.c: 178: RS(0);
+"178
+[e ( _RS (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 179: return ClockComLeitura();
+"179
+[e ) ( _ClockComLeitura ..  ]
+[e $UE 31  ]
+[; ;lcd_grafico.c: 180: }
+"180
+[e :UE 31 ]
+}
+"189
+[v _LerDado `(uc  1 ef1`uc ]
+{
+[; ;lcd_grafico.c: 188: unsigned char LerDado(unsigned char area)
+[; ;lcd_grafico.c: 189: {
+[e :U _LerDado ]
+[v _area `uc  1 r1 ]
+[f ]
+"190
+[v _leitura `uc  1 a ]
+[; ;lcd_grafico.c: 190: unsigned char leitura;
+[; ;lcd_grafico.c: 191: SelecionarArea(area);
+"191
+[e ( _SelecionarArea (1 _area ]
+[; ;lcd_grafico.c: 192: RS(1);
+"192
+[e ( _RS (1 -> -> 1 `i `uc ]
+[; ;lcd_grafico.c: 193: leitura = ClockComLeitura();
+"193
+[e = _leitura ( _ClockComLeitura ..  ]
+[; ;lcd_grafico.c: 194: SelecionarArea(0);
+"194
+[e ( _SelecionarArea (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 195: return leitura;
+"195
+[e ) _leitura ]
+[e $UE 32  ]
+[; ;lcd_grafico.c: 196: }
+"196
+[e :UE 32 ]
+}
+"208
+[v _SelecionarArea `(v  1 ef1`uc ]
+{
+[; ;lcd_grafico.c: 207: void SelecionarArea(unsigned char area)
+[; ;lcd_grafico.c: 208: {
+[e :U _SelecionarArea ]
+[v _area `uc  1 r1 ]
+[f ]
+[; ;lcd_grafico.c: 209: CS1(area == 1 || area == 3);
+"209
+[e ( _CS1 (1 -> -> || == -> _area `i -> 1 `i == -> _area `i -> 3 `i `i `uc ]
+[; ;lcd_grafico.c: 210: CS2(area >= 2);
+"210
+[e ( _CS2 (1 -> -> >= -> _area `i -> 2 `i `i `uc ]
+[; ;lcd_grafico.c: 211: }
+"211
+[e :UE 33 ]
+}
+"220
+[v _EnderecoX `(v  1 ef2`uc`uc ]
+{
+[; ;lcd_grafico.c: 219: void EnderecoX(unsigned char x, unsigned char area)
+[; ;lcd_grafico.c: 220: {
+[e :U _EnderecoX ]
+[v _x `uc  1 r1 ]
+[v _area `uc  1 r2 ]
+[f ]
+[; ;lcd_grafico.c: 221: SelecionarArea(area);
+"221
+[e ( _SelecionarArea (1 _area ]
+[; ;lcd_grafico.c: 222: RS(0);
+"222
+[e ( _RS (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 223: *pinos_display.latchDADOS.latch = 0b10111000 | x;
+"223
+[e = *U . . _pinos_display 6 0 -> | -> 184 `i -> _x `i `uc ]
+[; ;lcd_grafico.c: 224: Clock();
+"224
+[e ( _Clock ..  ]
+[; ;lcd_grafico.c: 225: SelecionarArea(0);
+"225
+[e ( _SelecionarArea (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 226: }
+"226
+[e :UE 34 ]
+}
+"235
+[v _EnderecoY `(v  1 ef2`uc`uc ]
+{
+[; ;lcd_grafico.c: 234: void EnderecoY(unsigned char y, unsigned char area)
+[; ;lcd_grafico.c: 235: {
+[e :U _EnderecoY ]
+[v _y `uc  1 r1 ]
+[v _area `uc  1 r2 ]
+[f ]
+[; ;lcd_grafico.c: 236: SelecionarArea(area);
+"236
+[e ( _SelecionarArea (1 _area ]
+[; ;lcd_grafico.c: 237: RS(0);
+"237
+[e ( _RS (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 238: *pinos_display.latchDADOS.latch = 0b1000000 | y;
+"238
+[e = *U . . _pinos_display 6 0 -> | -> 64 `i -> _y `i `uc ]
+[; ;lcd_grafico.c: 239: Clock();
+"239
+[e ( _Clock ..  ]
+[; ;lcd_grafico.c: 240: SelecionarArea(0);
+"240
+[e ( _SelecionarArea (1 -> -> 0 `i `uc ]
+[; ;lcd_grafico.c: 241: }
+"241
+[e :UE 35 ]
+}
+"253
+[v _E `(v  1 ef1`uc ]
+{
+[; ;lcd_grafico.c: 252: void E(unsigned char e)
+[; ;lcd_grafico.c: 253: {
+[e :U _E ]
+[v _e `uc  1 r1 ]
+[f ]
+[; ;lcd_grafico.c: 254: if(e)
+"254
+[e $ ! != -> _e `i -> -> -> 0 `i `uc `i 37  ]
+[; ;lcd_grafico.c: 255: *pinos_display.pinoE.latch_pino |= (1 << pinos_display.pinoE.bit_pino);
+"255
+[e =| *U . . _pinos_display 0 1 -> << -> 1 `i . . _pinos_display 0 2 `uc ]
+[e $U 38  ]
+"256
+[e :U 37 ]
+[; ;lcd_grafico.c: 256: else
+[; ;lcd_grafico.c: 257: *pinos_display.pinoE.latch_pino &= (~(1 << pinos_display.pinoE.bit_pino));
+"257
+[e =& *U . . _pinos_display 0 1 -> ~ << -> 1 `i . . _pinos_display 0 2 `uc ]
+[e :U 38 ]
+[; ;lcd_grafico.c: 258: *pinos_display.pinoE.porta_pino = *pinos_display.pinoE.latch_pino;
+"258
+[e = *U . . _pinos_display 0 0 *U . . _pinos_display 0 1 ]
+[; ;lcd_grafico.c: 259: }
+"259
+[e :UE 36 ]
+}
+"271
+[v _RW `(v  1 ef1`uc ]
+{
+[; ;lcd_grafico.c: 270: void RW(unsigned char rw)
+[; ;lcd_grafico.c: 271: {
+[e :U _RW ]
+[v _rw `uc  1 r1 ]
+[f ]
+[; ;lcd_grafico.c: 272: if(rw)
+"272
+[e $ ! != -> _rw `i -> -> -> 0 `i `uc `i 40  ]
+[; ;lcd_grafico.c: 273: *pinos_display.pinoRW.latch_pino |= (1 << pinos_display.pinoRW.bit_pino);
+"273
+[e =| *U . . _pinos_display 1 1 -> << -> 1 `i . . _pinos_display 1 2 `uc ]
+[e $U 41  ]
+"274
+[e :U 40 ]
+[; ;lcd_grafico.c: 274: else
+[; ;lcd_grafico.c: 275: *pinos_display.pinoRW.latch_pino &= (~(1 << pinos_display.pinoRW.bit_pino));
+"275
+[e =& *U . . _pinos_display 1 1 -> ~ << -> 1 `i . . _pinos_display 1 2 `uc ]
+[e :U 41 ]
+[; ;lcd_grafico.c: 276: *pinos_display.pinoRW.porta_pino = *pinos_display.pinoRW.latch_pino;
+"276
+[e = *U . . _pinos_display 1 0 *U . . _pinos_display 1 1 ]
+[; ;lcd_grafico.c: 277: }
+"277
+[e :UE 39 ]
+}
+"289
+[v _RS `(v  1 ef1`uc ]
+{
+[; ;lcd_grafico.c: 288: void RS(unsigned char rs)
+[; ;lcd_grafico.c: 289: {
+[e :U _RS ]
+[v _rs `uc  1 r1 ]
+[f ]
+[; ;lcd_grafico.c: 290: if(rs)
+"290
+[e $ ! != -> _rs `i -> -> -> 0 `i `uc `i 43  ]
+[; ;lcd_grafico.c: 291: *pinos_display.pinoRS.latch_pino |= (1 << pinos_display.pinoRS.bit_pino);
+"291
+[e =| *U . . _pinos_display 2 1 -> << -> 1 `i . . _pinos_display 2 2 `uc ]
+[e $U 44  ]
+"292
+[e :U 43 ]
+[; ;lcd_grafico.c: 292: else
+[; ;lcd_grafico.c: 293: *pinos_display.pinoRS.latch_pino &= (~(1 << pinos_display.pinoRS.bit_pino));
+"293
+[e =& *U . . _pinos_display 2 1 -> ~ << -> 1 `i . . _pinos_display 2 2 `uc ]
+[e :U 44 ]
+[; ;lcd_grafico.c: 294: *pinos_display.pinoRS.porta_pino = *pinos_display.pinoRS.latch_pino;
+"294
+[e = *U . . _pinos_display 2 0 *U . . _pinos_display 2 1 ]
+[; ;lcd_grafico.c: 295: }
+"295
+[e :UE 42 ]
+}
+"308
+[v _CS1 `(v  1 ef1`uc ]
+{
+[; ;lcd_grafico.c: 307: void CS1(unsigned char cs1)
+[; ;lcd_grafico.c: 308: {
+[e :U _CS1 ]
+[v _cs1 `uc  1 r1 ]
+[f ]
+[; ;lcd_grafico.c: 309: cs1 = !cs1;
+"309
+[e = _cs1 -> -> ! != -> _cs1 `i -> -> -> 0 `i `uc `i `i `uc ]
+[; ;lcd_grafico.c: 310: if(cs1)
+"310
+[e $ ! != -> _cs1 `i -> -> -> 0 `i `uc `i 46  ]
+[; ;lcd_grafico.c: 311: *pinos_display.pinoCS1.latch_pino |= (1 << pinos_display.pinoCS1.bit_pino);
+"311
+[e =| *U . . _pinos_display 3 1 -> << -> 1 `i . . _pinos_display 3 2 `uc ]
+[e $U 47  ]
+"312
+[e :U 46 ]
+[; ;lcd_grafico.c: 312: else
+[; ;lcd_grafico.c: 313: *pinos_display.pinoCS1.latch_pino &= (~(1 << pinos_display.pinoCS1.bit_pino));
+"313
+[e =& *U . . _pinos_display 3 1 -> ~ << -> 1 `i . . _pinos_display 3 2 `uc ]
+[e :U 47 ]
+[; ;lcd_grafico.c: 314: *pinos_display.pinoCS1.porta_pino = *pinos_display.pinoCS1.latch_pino;
+"314
+[e = *U . . _pinos_display 3 0 *U . . _pinos_display 3 1 ]
+[; ;lcd_grafico.c: 315: }
+"315
+[e :UE 45 ]
+}
+"328
+[v _CS2 `(v  1 ef1`uc ]
+{
+[; ;lcd_grafico.c: 327: void CS2(unsigned char cs2)
+[; ;lcd_grafico.c: 328: {
+[e :U _CS2 ]
+[v _cs2 `uc  1 r1 ]
+[f ]
+[; ;lcd_grafico.c: 329: cs2 = !cs2;
+"329
+[e = _cs2 -> -> ! != -> _cs2 `i -> -> -> 0 `i `uc `i `i `uc ]
+[; ;lcd_grafico.c: 330: if(cs2)
+"330
+[e $ ! != -> _cs2 `i -> -> -> 0 `i `uc `i 49  ]
+[; ;lcd_grafico.c: 331: *pinos_display.pinoCS2.latch_pino |= (1 << pinos_display.pinoCS2.bit_pino);
+"331
+[e =| *U . . _pinos_display 4 1 -> << -> 1 `i . . _pinos_display 4 2 `uc ]
+[e $U 50  ]
+"332
+[e :U 49 ]
+[; ;lcd_grafico.c: 332: else
+[; ;lcd_grafico.c: 333: *pinos_display.pinoCS2.latch_pino &= (~(1 << pinos_display.pinoCS2.bit_pino));
+"333
+[e =& *U . . _pinos_display 4 1 -> ~ << -> 1 `i . . _pinos_display 4 2 `uc ]
+[e :U 50 ]
+[; ;lcd_grafico.c: 334: *pinos_display.pinoCS2.porta_pino = *pinos_display.pinoCS2.latch_pino;
+"334
+[e = *U . . _pinos_display 4 0 *U . . _pinos_display 4 1 ]
+[; ;lcd_grafico.c: 335: }
+"335
+[e :UE 48 ]
+}
+"347
+[v _RST `(v  1 ef1`uc ]
+{
+[; ;lcd_grafico.c: 346: void RST(unsigned char rst)
+[; ;lcd_grafico.c: 347: {
+[e :U _RST ]
+[v _rst `uc  1 r1 ]
+[f ]
+[; ;lcd_grafico.c: 348: if(rst)
+"348
+[e $ ! != -> _rst `i -> -> -> 0 `i `uc `i 52  ]
+[; ;lcd_grafico.c: 349: *pinos_display.pinoRST.latch_pino |= (1 << pinos_display.pinoRST.bit_pino);
+"349
+[e =| *U . . _pinos_display 5 1 -> << -> 1 `i . . _pinos_display 5 2 `uc ]
+[e $U 53  ]
+"350
+[e :U 52 ]
+[; ;lcd_grafico.c: 350: else
+[; ;lcd_grafico.c: 351: *pinos_display.pinoRST.latch_pino &= (~(1 << pinos_display.pinoRST.bit_pino));
+"351
+[e =& *U . . _pinos_display 5 1 -> ~ << -> 1 `i . . _pinos_display 5 2 `uc ]
+[e :U 53 ]
+[; ;lcd_grafico.c: 352: *pinos_display.pinoRST.porta_pino = *pinos_display.pinoRST.latch_pino;
+"352
+[e = *U . . _pinos_display 5 0 *U . . _pinos_display 5 1 ]
+[; ;lcd_grafico.c: 353: }
+"353
+[e :UE 51 ]
+}

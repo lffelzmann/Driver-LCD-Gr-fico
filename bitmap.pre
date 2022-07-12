@@ -1,0 +1,123 @@
+
+# 1 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\bitmap.c"
+
+# 4 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\bitmap.h"
+void DesenharBitmap(const unsigned char* bitmap, unsigned char x, unsigned char y, unsigned char cor, unsigned char altura_px, unsigned char largura_bytes);
+
+const unsigned char bitmap_computador[] = { 0b11111111,0b11111111,0b11111111,0b11111111,0b11110000,
+0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+0b10000001,0b01110111,0b00100101,0b11011100,0b00010000,
+0b10000011,0b01010101,0b01101101,0b01010100,0b00010000,
+0b10000001,0b01010101,0b00100101,0b01010100,0b00010000,
+0b10000001,0b01110111,0b00100101,0b11011100,0b00010000,
+0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+0b10000001,0b01110111,0b01110010,0b01011100,0b00010000,
+0b10000011,0b01010101,0b01010110,0b11010100,0b00010000,
+0b10000001,0b01010101,0b01010010,0b01010100,0b00010000,
+0b10000001,0b01110111,0b01110010,0b01011100,0b00010000,
+0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+0b11111111,0b11111111,0b11111111,0b11111111,0b11110000,
+0b00000000,0b00000000,0b11000000,0b00000000,0b00000000,
+0b00000000,0b00000000,0b11000000,0b00000000,0b00000000,
+0b00000000,0b00000001,0b11100000,0b00000000,0b00000000,
+0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,
+0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,
+0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,
+0b00000001,0b11111111,0b11111111,0b11110000,0b00000000,
+0b00000001,0b00000000,0b00000000,0b00010000,0b00000000,
+0b00000001,0b01010101,0b01010101,0b01010000,0b00000000,
+0b00000001,0b00000000,0b00000000,0b00010000,0b00000000,
+0b00000001,0b00000000,0b00000000,0b00010000,0b00000000,
+0b00000001,0b00000000,0b00000000,0b00010000,0b00000000,
+0b00000001,0b00101010,0b10101010,0b10010000,0b00000000,
+0b00000001,0b00000000,0b00000000,0b00010000,0b00000000,
+0b00000001,0b11111111,0b11111111,0b11110000,0b00000000};
+
+# 5 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h"
+typedef struct
+{
+volatile unsigned char* porta_pino;
+volatile unsigned char* latch_pino;
+unsigned char bit_pino;
+}
+InfoPino;
+
+typedef struct
+{
+volatile unsigned char* latch;
+volatile unsigned char* tris;
+}
+InfoLatch;
+
+typedef struct
+{
+InfoPino pinoE;
+InfoPino pinoRW;
+InfoPino pinoRS;
+InfoPino pinoCS1;
+InfoPino pinoCS2;
+InfoPino pinoRST;
+InfoLatch latchDADOS;
+}
+MCUConfig;
+
+MCUConfig pinos_display;
+
+# 54
+void InverterCores(void);
+void Ponto(unsigned char x,unsigned char y,unsigned char apaga);
+unsigned char NovoX(unsigned char x,unsigned char area,unsigned char apaga);
+void LimparDisplay(void);
+void InicializarDisplay(MCUConfig pinos);
+void Clock(void);
+unsigned char ClockComLeitura(void);
+void DesligarDisplay(void);
+void LigarDisplay(void);
+void EnviarDado(unsigned char dado,unsigned char area);
+unsigned char ReceberStatus(void);
+unsigned char LerDado(unsigned char area);
+void SelecionarArea(unsigned char area);
+void EnderecoX(unsigned char x,unsigned char area);
+void EnderecoY(unsigned char y,unsigned char area);
+void E(unsigned char e);
+void RW(unsigned char rw);
+void RS(unsigned char rs);
+void CS1(unsigned char cs1);
+void CS2(unsigned char cs2);
+void RST(unsigned char rst);
+
+# 13 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\bitmap.c"
+void DesenharBitmap(const unsigned char* bitmap, unsigned char x, unsigned char y, unsigned char cor, unsigned char altura_px, unsigned char largura_bytes)
+{
+unsigned char altura;
+unsigned char largura;
+unsigned char mascara;
+unsigned char bits;
+unsigned char novoY;
+unsigned char ponto;
+for(altura = 0; altura < altura_px; altura++)
+{
+novoY = y;
+for(largura = 0; largura < largura_bytes; largura++)
+{
+mascara = 0b10000000;
+for(bits = 0; bits < 8; bits++)
+{
+ponto = *bitmap & mascara;
+Ponto(x, novoY, cor ? ponto : !ponto);
+novoY++;
+mascara = mascara >> 1;
+}
+bitmap++;
+}
+x++;
+}
+}
+

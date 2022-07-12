@@ -1,0 +1,650 @@
+
+# 1 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\recursos_texto.c"
+
+# 11 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\recursos_texto.h"
+unsigned char Centralizar(unsigned char tamanho_frase);
+unsigned char JustificarDireita(unsigned char tamanho_frase);
+unsigned char TamanhoFrase(const char* frase);
+void Cursor(unsigned char x, unsigned char y, unsigned char cor);
+void EscreveVariavel(unsigned long variavel, unsigned char x, unsigned char y, unsigned char cor);
+void EscreveCaractere(unsigned char caractere, unsigned char x, unsigned char y, unsigned char cor);
+void EscreveFrase(const char* frase, unsigned char x, unsigned char y, unsigned char cor);
+
+# 1 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\recursos_texto.c"
+;
+
+# 9 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\caracteres.h"
+const unsigned char alfabeto[365]={
+0b01111110,
+0b10001000,
+0b10001000,
+0b10001000,
+0b01111110,
+
+0b11111110,
+0b10010010,
+0b10010010,
+0b10010010,
+0b01101100,
+
+0b01111100,
+0b10000010,
+0b10000010,
+0b10000010,
+0b01000100,
+
+0b11111110,
+0b10000010,
+0b10000010,
+0b01000100,
+0b00111000,
+
+0b11111110,
+0b10010010,
+0b10010010,
+0b10010010,
+0b10000010,
+
+0b11111110,
+0b10010000,
+0b10010000,
+0b10010000,
+0b10000000,
+
+0b01111100,
+0b10000010,
+0b10010010,
+0b10010010,
+0b01011110,
+
+0b11111110,
+0b00010000,
+0b00010000,
+0b00010000,
+0b11111110,
+
+0b00000000,
+0b10000010,
+0b11111110,
+0b10000010,
+0b00000000,
+
+0b00000100,
+0b00000010,
+0b10000010,
+0b11111100,
+0b10000000,
+
+0b11111110,
+0b00010000,
+0b00101000,
+0b01000100,
+0b10000010,
+
+0b11111110,
+0b00000010,
+0b00000010,
+0b00000010,
+0b00000010,
+
+0b11111110,
+0b01000000,
+0b00110000,
+0b01000000,
+0b11111110,
+
+0b11111110,
+0b00100000,
+0b00010000,
+0b00001000,
+0b11111110,
+
+0b01111100,
+0b10000010,
+0b10000010,
+0b10000010,
+0b01111100,
+
+0b11111110,
+0b10010000,
+0b10010000,
+0b10010000,
+0b01100000,
+
+0b01111100,
+0b10000010,
+0b10001010,
+0b10000100,
+0b01111010,
+
+0b11111110,
+0b10010000,
+0b10011000,
+0b10010100,
+0b01100010,
+
+0b01100010,
+0b10010010,
+0b10010010,
+0b10010010,
+0b10001100,
+
+0b10000000,
+0b10000000,
+0b11111110,
+0b10000000,
+0b10000000,
+
+0b11111100,
+0b00000010,
+0b00000010,
+0b00000010,
+0b11111100,
+
+0b11111000,
+0b00000100,
+0b00000010,
+0b00000100,
+0b11111000,
+
+0b11111100,
+0b00000010,
+0b00011100,
+0b00000010,
+0b11111100,
+
+0b11000110,
+0b00101000,
+0b00010000,
+0b00101000,
+0b11000110,
+
+0b11100000,
+0b00010000,
+0b00001110,
+0b00010000,
+0b11100000,
+
+0b10000110,
+0b10001010,
+0b10010010,
+0b10100010,
+0b11000010,
+
+
+
+0b00000100,
+0b00101010,
+0b00101010,
+0b00101010,
+0b00011110,
+
+0b11111110,
+0b00010010,
+0b00100010,
+0b00100010,
+0b00011100,
+
+0b00011100,
+0b00100010,
+0b00100010,
+0b00100010,
+0b00000100,
+
+0b00011100,
+0b00100010,
+0b00100010,
+0b00010010,
+0b11111110,
+
+0b00011100,
+0b00101010,
+0b00101010,
+0b00101010,
+0b00011000,
+
+0b00010000,
+0b01111110,
+0b10010000,
+0b10000000,
+0b01000000,
+
+0b00110000,
+0b01001010,
+0b01001010,
+0b01001010,
+0b01111100,
+
+0b11111110,
+0b00010000,
+0b00100000,
+0b00100000,
+0b00011110,
+
+0b00000000,
+0b00100010,
+0b10111110,
+0b00000010,
+0b00000000,
+
+0b00000100,
+0b00000010,
+0b00100010,
+0b10111100,
+0b00000000,
+
+0b11111110,
+0b00001000,
+0b00010100,
+0b00100010,
+0b00000000,
+
+0b00000000,
+0b10000010,
+0b11111110,
+0b00000010,
+0b00000000,
+
+0b00111110,
+0b00100000,
+0b00011000,
+0b00100000,
+0b00011110,
+
+0b00111110,
+0b00010000,
+0b00100000,
+0b00100000,
+0b00011110,
+
+0b00011100,
+0b00100010,
+0b00100010,
+0b00100010,
+0b00011100,
+
+0b00111110,
+0b00101000,
+0b00101000,
+0b00101000,
+0b00010000,
+
+0b00010000,
+0b00101000,
+0b00101000,
+0b00011000,
+0b00111110,
+
+0b00111110,
+0b00010000,
+0b00100000,
+0b00100000,
+0b00010000,
+
+0b00010010,
+0b00101010,
+0b00101010,
+0b00101010,
+0b00000100,
+
+0b00100000,
+0b11111100,
+0b00100010,
+0b00000010,
+0b00000100,
+
+0b00111100,
+0b00000010,
+0b00000010,
+0b00000100,
+0b00111110,
+
+0b00111000,
+0b00000100,
+0b00000010,
+0b00000100,
+0b00111000,
+
+0b00111100,
+0b00000010,
+0b00001100,
+0b00000010,
+0b00111100,
+
+0b00100010,
+0b00010100,
+0b00001000,
+0b00010100,
+0b00100010,
+
+0b00110000,
+0b00001010,
+0b00001010,
+0b00001010,
+0b00111100,
+
+0b00100010,
+0b00100110,
+0b00101010,
+0b00110010,
+0b00100010,
+
+
+0b01111100,
+0b10001010,
+0b10010010,
+0b10100010,
+0b01111100,
+
+0b00000000,
+0b01000010,
+0b11111110,
+0b00000010,
+0b00000000,
+
+0b01000010,
+0b10000110,
+0b10001010,
+0b10010010,
+0b01100010,
+
+0b10000100,
+0b10000010,
+0b10100010,
+0b11010010,
+0b10001100,
+
+0b00011000,
+0b00101000,
+0b01001000,
+0b11111110,
+0b00001000,
+
+0b11100100,
+0b10100010,
+0b10100010,
+0b10100010,
+0b10011100,
+
+0b00111100,
+0b01010010,
+0b10010010,
+0b10010010,
+0b00001100,
+
+0b10000000,
+0b10001110,
+0b10010000,
+0b10100000,
+0b11000000,
+
+0b01101100,
+0b10010010,
+0b10010010,
+0b10010010,
+0b01101100,
+
+0b01100000,
+0b10010010,
+0b10010010,
+0b10010100,
+0b01111000,
+
+
+
+0b01000000,
+0b10000000,
+0b10001010,
+0b10010000,
+0b01100000,
+
+0b00000000,
+0b00000000,
+0b11110010,
+0b00000000,
+0b00000000,
+
+0b00000000,
+0b00000000,
+0b00000010,
+0b00000000,
+0b00000000,
+
+0b00001010,
+0b00001100,
+0b00000000,
+0b00000000,
+0b00000000,
+
+0b00000000,
+0b00000000,
+0b00100100,
+0b00000000,
+0b00000000,
+
+0b00101000,
+0b11111110,
+0b00101000,
+0b11111110,
+0b00101000,
+
+0b00010100,
+0b00001000,
+0b00111110,
+0b00001000,
+0b00010100,
+
+0b00000000,
+0b00000000,
+0b00000000,
+0b00000000,
+0b00000000,
+
+0b00000010,
+0b00000010,
+0b00000010,
+0b00000010,
+0b00000010,
+
+0b00000100,
+0b00001000,
+0b00010000,
+0b00100000,
+0b01000000,
+
+0b11000100,
+0b11001000,
+0b00010000,
+0b00100110,
+0b01000110};
+
+# 5 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h"
+typedef struct
+{
+volatile unsigned char* porta_pino;
+volatile unsigned char* latch_pino;
+unsigned char bit_pino;
+}
+InfoPino;
+
+typedef struct
+{
+volatile unsigned char* latch;
+volatile unsigned char* tris;
+}
+InfoLatch;
+
+typedef struct
+{
+InfoPino pinoE;
+InfoPino pinoRW;
+InfoPino pinoRS;
+InfoPino pinoCS1;
+InfoPino pinoCS2;
+InfoPino pinoRST;
+InfoLatch latchDADOS;
+}
+MCUConfig;
+
+MCUConfig pinos_display;
+
+# 54
+void InverterCores(void);
+void Ponto(unsigned char x,unsigned char y,unsigned char apaga);
+unsigned char NovoX(unsigned char x,unsigned char area,unsigned char apaga);
+void LimparDisplay(void);
+void InicializarDisplay(MCUConfig pinos);
+void Clock(void);
+unsigned char ClockComLeitura(void);
+void DesligarDisplay(void);
+void LigarDisplay(void);
+void EnviarDado(unsigned char dado,unsigned char area);
+unsigned char ReceberStatus(void);
+unsigned char LerDado(unsigned char area);
+void SelecionarArea(unsigned char area);
+void EnderecoX(unsigned char x,unsigned char area);
+void EnderecoY(unsigned char y,unsigned char area);
+void E(unsigned char e);
+void RW(unsigned char rw);
+void RS(unsigned char rs);
+void CS1(unsigned char cs1);
+void CS2(unsigned char cs2);
+void RST(unsigned char rst);
+
+# 3 "C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\recursos_texto.c"
+;
+
+# 11
+unsigned char Centralizar(unsigned char tamanho_frase)
+{
+return (128 - (tamanho_frase * (5 + 1))) >> 1;
+}
+
+# 22
+unsigned char JustificarDireita(unsigned char tamanho_frase)
+{
+return 128 - (tamanho_frase * (5 + 1));
+}
+
+# 33
+unsigned char TamanhoFrase(const char* frase)
+{
+unsigned char tamanho = 0;
+while(*frase)
+{
+tamanho++;
+frase++;
+}
+return tamanho;
+}
+
+# 51
+void Cursor(unsigned char x, unsigned char y, unsigned char cor)
+{
+unsigned char x_aux;
+for(x_aux = x; x_aux < (x + 7); x_aux++)
+Ponto(x_aux, y, cor);
+}
+
+# 66
+void EscreveVariavel(unsigned long variavel, unsigned char x, unsigned char y, unsigned char cor)
+{
+unsigned long multiplicacoes[10];
+unsigned char i, j;
+unsigned long resultado;
+unsigned long mascara = 1000000000;
+unsigned char escreveu=0;
+for(i = 0; i < 10; i++, mascara /= 10)
+{
+resultado = variavel;
+for(j = 0; j < i; j++)
+resultado -= multiplicacoes[j];
+resultado /= mascara;
+multiplicacoes[i] = resultado * mascara;
+if(resultado || escreveu || i == (10 - 1))
+{
+EscreveCaractere(resultado + 0x30, x, y, cor);
+y += (5 + 1);
+escreveu = 1;
+}
+}
+}
+
+# 97
+void EscreveCaractere(unsigned char caractere, unsigned char x, unsigned char y, unsigned char cor)
+{
+unsigned char ponto;
+unsigned char mascara;
+unsigned char x_aux, y_aux;
+unsigned int end_alfa;
+
+
+if(caractere >= '0' && caractere <= '9')
+end_alfa = ((caractere - 48) * 5) + 260;
+else if(caractere >= 'A' && caractere <= 'Z')
+end_alfa = (caractere - 'A') * 5;
+else if(caractere >= 'a' && caractere <= 'z')
+end_alfa = ((caractere - 'a') + 26 ) * 5;
+else
+{
+switch(caractere)
+{
+case '?':
+end_alfa = 310;
+break;
+case '!':
+end_alfa = 315;
+break;
+case '.':
+end_alfa = 320;
+break;
+case ',':
+end_alfa = 325;
+break;
+case ':':
+end_alfa = 330;
+break;
+case '#':
+end_alfa = 335;
+break;
+case '*':
+end_alfa = 340;
+break;
+case ' ':
+end_alfa = 345;
+break;
+case '_':
+end_alfa = 350;
+break;
+case '/':
+end_alfa = 355;
+break;
+case '%':
+end_alfa = 360;
+break;
+}
+}
+
+for(y_aux = y; y_aux < (y + 5); y_aux++)
+{
+mascara=0b10000000;
+for(x_aux = x; x_aux < (x + 8); x_aux++)
+{
+ponto = alfabeto[end_alfa] & mascara;
+Ponto(x_aux, y_aux, cor ? ponto : !ponto);
+mascara = mascara >> 1;
+}
+end_alfa++;
+}
+}
+
+# 172
+void EscreveFrase(const char* frase, unsigned char x, unsigned char y, unsigned char cor)
+{
+while(*frase)
+{
+EscreveCaractere(*frase, x, y, cor);
+frase++;
+y += (5 + 1);
+}
+}

@@ -1,0 +1,425 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"6 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\bitmap.h
+[v _bitmap_computador `Cuc  -> 0 `x e ]
+[s S1 `*Vuc 1 `*Vuc 1 `uc 1 ]
+[n S1 . porta_pino latch_pino bit_pino ]
+[s S2 `*Vuc 1 `*Vuc 1 ]
+[n S2 . latch tris ]
+[s S3 `S1 1 `S1 1 `S1 1 `S1 1 `S1 1 `S1 1 `S2 1 ]
+[n S3 . pinoE pinoRW pinoRS pinoCS1 pinoCS2 pinoRST latchDADOS ]
+"32 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _pinos_display `S3  1 e ]
+"55 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _Ponto `(v  0 ef3`uc`uc`uc ]
+[; ;bitmap.h: 4: void DesenharBitmap(const unsigned char* bitmap, unsigned char x, unsigned char y, unsigned char cor, unsigned char altura_px, unsigned char largura_bytes);
+"6 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\bitmap.h
+[i _bitmap_computador
+:U ..
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 240 `i `uc
+"7
+-> -> 128 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+"8
+-> -> 129 `i `uc
+-> -> 119 `i `uc
+-> -> 37 `i `uc
+-> -> 220 `i `uc
+-> -> 16 `i `uc
+"9
+-> -> 131 `i `uc
+-> -> 85 `i `uc
+-> -> 109 `i `uc
+-> -> 84 `i `uc
+-> -> 16 `i `uc
+"10
+-> -> 129 `i `uc
+-> -> 85 `i `uc
+-> -> 37 `i `uc
+-> -> 84 `i `uc
+-> -> 16 `i `uc
+"11
+-> -> 129 `i `uc
+-> -> 119 `i `uc
+-> -> 37 `i `uc
+-> -> 220 `i `uc
+-> -> 16 `i `uc
+"12
+-> -> 128 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+"13
+-> -> 128 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+"14
+-> -> 128 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+"15
+-> -> 128 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+"16
+-> -> 128 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+"17
+-> -> 129 `i `uc
+-> -> 119 `i `uc
+-> -> 114 `i `uc
+-> -> 92 `i `uc
+-> -> 16 `i `uc
+"18
+-> -> 131 `i `uc
+-> -> 85 `i `uc
+-> -> 86 `i `uc
+-> -> 212 `i `uc
+-> -> 16 `i `uc
+"19
+-> -> 129 `i `uc
+-> -> 85 `i `uc
+-> -> 82 `i `uc
+-> -> 84 `i `uc
+-> -> 16 `i `uc
+"20
+-> -> 129 `i `uc
+-> -> 119 `i `uc
+-> -> 114 `i `uc
+-> -> 92 `i `uc
+-> -> 16 `i `uc
+"21
+-> -> 128 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+"22
+-> -> 128 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+"23
+-> -> 128 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+"24
+-> -> 128 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+"25
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 240 `i `uc
+"26
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 192 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"27
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 192 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"28
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 224 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"29
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"30
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"31
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"32
+-> -> 1 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 240 `i `uc
+-> -> 0 `i `uc
+"33
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+"34
+-> -> 1 `i `uc
+-> -> 85 `i `uc
+-> -> 85 `i `uc
+-> -> 80 `i `uc
+-> -> 0 `i `uc
+"35
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+"36
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+"37
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+"38
+-> -> 1 `i `uc
+-> -> 42 `i `uc
+-> -> 170 `i `uc
+-> -> 144 `i `uc
+-> -> 0 `i `uc
+"39
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+"40
+-> -> 1 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 240 `i `uc
+-> -> 0 `i `uc
+..
+]
+[; ;bitmap.h: 6: const unsigned char bitmap_computador[] = { 0b11111111,0b11111111,0b11111111,0b11111111,0b11110000,
+[; ;bitmap.h: 7: 0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+[; ;bitmap.h: 8: 0b10000001,0b01110111,0b00100101,0b11011100,0b00010000,
+[; ;bitmap.h: 9: 0b10000011,0b01010101,0b01101101,0b01010100,0b00010000,
+[; ;bitmap.h: 10: 0b10000001,0b01010101,0b00100101,0b01010100,0b00010000,
+[; ;bitmap.h: 11: 0b10000001,0b01110111,0b00100101,0b11011100,0b00010000,
+[; ;bitmap.h: 12: 0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+[; ;bitmap.h: 13: 0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+[; ;bitmap.h: 14: 0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+[; ;bitmap.h: 15: 0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+[; ;bitmap.h: 16: 0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+[; ;bitmap.h: 17: 0b10000001,0b01110111,0b01110010,0b01011100,0b00010000,
+[; ;bitmap.h: 18: 0b10000011,0b01010101,0b01010110,0b11010100,0b00010000,
+[; ;bitmap.h: 19: 0b10000001,0b01010101,0b01010010,0b01010100,0b00010000,
+[; ;bitmap.h: 20: 0b10000001,0b01110111,0b01110010,0b01011100,0b00010000,
+[; ;bitmap.h: 21: 0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+[; ;bitmap.h: 22: 0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+[; ;bitmap.h: 23: 0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+[; ;bitmap.h: 24: 0b10000000,0b00000000,0b00000000,0b00000000,0b00010000,
+[; ;bitmap.h: 25: 0b11111111,0b11111111,0b11111111,0b11111111,0b11110000,
+[; ;bitmap.h: 26: 0b00000000,0b00000000,0b11000000,0b00000000,0b00000000,
+[; ;bitmap.h: 27: 0b00000000,0b00000000,0b11000000,0b00000000,0b00000000,
+[; ;bitmap.h: 28: 0b00000000,0b00000001,0b11100000,0b00000000,0b00000000,
+[; ;bitmap.h: 29: 0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,
+[; ;bitmap.h: 30: 0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,
+[; ;bitmap.h: 31: 0b00000000,0b00000000,0b00000000,0b00000000,0b00000000,
+[; ;bitmap.h: 32: 0b00000001,0b11111111,0b11111111,0b11110000,0b00000000,
+[; ;bitmap.h: 33: 0b00000001,0b00000000,0b00000000,0b00010000,0b00000000,
+[; ;bitmap.h: 34: 0b00000001,0b01010101,0b01010101,0b01010000,0b00000000,
+[; ;bitmap.h: 35: 0b00000001,0b00000000,0b00000000,0b00010000,0b00000000,
+[; ;bitmap.h: 36: 0b00000001,0b00000000,0b00000000,0b00010000,0b00000000,
+[; ;bitmap.h: 37: 0b00000001,0b00000000,0b00000000,0b00010000,0b00000000,
+[; ;bitmap.h: 38: 0b00000001,0b00101010,0b10101010,0b10010000,0b00000000,
+[; ;bitmap.h: 39: 0b00000001,0b00000000,0b00000000,0b00010000,0b00000000,
+[; ;bitmap.h: 40: 0b00000001,0b11111111,0b11111111,0b11110000,0b00000000};
+[; ;lcd_grafico.h: 5: typedef struct
+[; ;lcd_grafico.h: 6: {
+[; ;lcd_grafico.h: 7: volatile unsigned char* porta_pino;
+[; ;lcd_grafico.h: 8: volatile unsigned char* latch_pino;
+[; ;lcd_grafico.h: 9: unsigned char bit_pino;
+[; ;lcd_grafico.h: 10: }
+[; ;lcd_grafico.h: 11: InfoPino;
+[; ;lcd_grafico.h: 13: typedef struct
+[; ;lcd_grafico.h: 14: {
+[; ;lcd_grafico.h: 15: volatile unsigned char* latch;
+[; ;lcd_grafico.h: 16: volatile unsigned char* tris;
+[; ;lcd_grafico.h: 17: }
+[; ;lcd_grafico.h: 18: InfoLatch;
+[; ;lcd_grafico.h: 20: typedef struct
+[; ;lcd_grafico.h: 21: {
+[; ;lcd_grafico.h: 22: InfoPino pinoE;
+[; ;lcd_grafico.h: 23: InfoPino pinoRW;
+[; ;lcd_grafico.h: 24: InfoPino pinoRS;
+[; ;lcd_grafico.h: 25: InfoPino pinoCS1;
+[; ;lcd_grafico.h: 26: InfoPino pinoCS2;
+[; ;lcd_grafico.h: 27: InfoPino pinoRST;
+[; ;lcd_grafico.h: 28: InfoLatch latchDADOS;
+[; ;lcd_grafico.h: 29: }
+[; ;lcd_grafico.h: 30: MCUConfig;
+[; ;lcd_grafico.h: 32: MCUConfig pinos_display;
+[; ;lcd_grafico.h: 54: void InverterCores(void);
+[; ;lcd_grafico.h: 55: void Ponto(unsigned char x,unsigned char y,unsigned char apaga);
+[; ;lcd_grafico.h: 56: unsigned char NovoX(unsigned char x,unsigned char area,unsigned char apaga);
+[; ;lcd_grafico.h: 57: void LimparDisplay(void);
+[; ;lcd_grafico.h: 58: void InicializarDisplay(MCUConfig pinos);
+[; ;lcd_grafico.h: 59: void Clock(void);
+[; ;lcd_grafico.h: 60: unsigned char ClockComLeitura(void);
+[; ;lcd_grafico.h: 61: void DesligarDisplay(void);
+[; ;lcd_grafico.h: 62: void LigarDisplay(void);
+[; ;lcd_grafico.h: 63: void EnviarDado(unsigned char dado,unsigned char area);
+[; ;lcd_grafico.h: 64: unsigned char ReceberStatus(void);
+[; ;lcd_grafico.h: 65: unsigned char LerDado(unsigned char area);
+[; ;lcd_grafico.h: 66: void SelecionarArea(unsigned char area);
+[; ;lcd_grafico.h: 67: void EnderecoX(unsigned char x,unsigned char area);
+[; ;lcd_grafico.h: 68: void EnderecoY(unsigned char y,unsigned char area);
+[; ;lcd_grafico.h: 69: void E(unsigned char e);
+[; ;lcd_grafico.h: 70: void RW(unsigned char rw);
+[; ;lcd_grafico.h: 71: void RS(unsigned char rs);
+[; ;lcd_grafico.h: 72: void CS1(unsigned char cs1);
+[; ;lcd_grafico.h: 73: void CS2(unsigned char cs2);
+[; ;lcd_grafico.h: 74: void RST(unsigned char rst);
+"14 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\bitmap.c
+[v _DesenharBitmap `(v  1 ef6`*Cuc`uc`uc`uc`uc`uc ]
+{
+[; ;bitmap.c: 13: void DesenharBitmap(const unsigned char* bitmap, unsigned char x, unsigned char y, unsigned char cor, unsigned char altura_px, unsigned char largura_bytes)
+[; ;bitmap.c: 14: {
+[e :U _DesenharBitmap ]
+[v _bitmap `*Cuc  1 r1 ]
+[v _x `uc  1 r2 ]
+[v _y `uc  1 r3 ]
+[v _cor `uc  1 r4 ]
+[v _altura_px `uc  1 r5 ]
+[v _largura_bytes `uc  1 r6 ]
+[f ]
+"15
+[v _altura `uc  1 a ]
+"16
+[v _largura `uc  1 a ]
+"17
+[v _mascara `uc  1 a ]
+"18
+[v _bits `uc  1 a ]
+"19
+[v _novoY `uc  1 a ]
+"20
+[v _ponto `uc  1 a ]
+[; ;bitmap.c: 15: unsigned char altura;
+[; ;bitmap.c: 16: unsigned char largura;
+[; ;bitmap.c: 17: unsigned char mascara;
+[; ;bitmap.c: 18: unsigned char bits;
+[; ;bitmap.c: 19: unsigned char novoY;
+[; ;bitmap.c: 20: unsigned char ponto;
+[; ;bitmap.c: 21: for(altura = 0; altura < altura_px; altura++)
+"21
+{
+[e = _altura -> -> 0 `i `uc ]
+[e $U 8  ]
+"22
+[e :U 5 ]
+[; ;bitmap.c: 22: {
+{
+[; ;bitmap.c: 23: novoY = y;
+"23
+[e = _novoY _y ]
+[; ;bitmap.c: 24: for(largura = 0; largura < largura_bytes; largura++)
+"24
+{
+[e = _largura -> -> 0 `i `uc ]
+[e $U 12  ]
+"25
+[e :U 9 ]
+[; ;bitmap.c: 25: {
+{
+[; ;bitmap.c: 26: mascara = 0b10000000;
+"26
+[e = _mascara -> -> 128 `i `uc ]
+[; ;bitmap.c: 27: for(bits = 0; bits < 8; bits++)
+"27
+{
+[e = _bits -> -> 0 `i `uc ]
+[e $ < -> _bits `i -> 8 `i 13  ]
+[e $U 14  ]
+"28
+[e :U 13 ]
+[; ;bitmap.c: 28: {
+{
+[; ;bitmap.c: 29: ponto = *bitmap & mascara;
+"29
+[e = _ponto -> & -> *U _bitmap `i -> _mascara `i `uc ]
+[; ;bitmap.c: 30: Ponto(x, novoY, cor ? ponto : !ponto);
+"30
+[e ( _Ponto (3 , , _x _novoY -> ? != -> _cor `i -> -> -> 0 `i `uc `i : -> _ponto `i -> ! != -> _ponto `i -> -> -> 0 `i `uc `i `i `uc ]
+[; ;bitmap.c: 31: novoY++;
+"31
+[e ++ _novoY -> -> 1 `i `uc ]
+[; ;bitmap.c: 32: mascara = mascara >> 1;
+"32
+[e = _mascara -> >> -> _mascara `i -> 1 `i `uc ]
+"33
+}
+"27
+[e ++ _bits -> -> 1 `i `uc ]
+[e $ < -> _bits `i -> 8 `i 13  ]
+[e :U 14 ]
+"33
+}
+[; ;bitmap.c: 33: }
+[; ;bitmap.c: 34: bitmap++;
+"34
+[e ++ _bitmap * -> -> 1 `i `x -> -> # *U _bitmap `i `x ]
+"35
+}
+"24
+[e ++ _largura -> -> 1 `i `uc ]
+[e :U 12 ]
+[e $ < -> _largura `i -> _largura_bytes `i 9  ]
+[e :U 10 ]
+"35
+}
+[; ;bitmap.c: 35: }
+[; ;bitmap.c: 36: x++;
+"36
+[e ++ _x -> -> 1 `i `uc ]
+"37
+}
+"21
+[e ++ _altura -> -> 1 `i `uc ]
+[e :U 8 ]
+[e $ < -> _altura `i -> _altura_px `i 5  ]
+[e :U 6 ]
+"37
+}
+[; ;bitmap.c: 37: }
+[; ;bitmap.c: 38: }
+"38
+[e :UE 4 ]
+}

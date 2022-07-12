@@ -1,0 +1,1651 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"9 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\caracteres.h
+[v _alfabeto `Cuc  -> 365 `i e ]
+[s S1 `*Vuc 1 `*Vuc 1 `uc 1 ]
+[n S1 . porta_pino latch_pino bit_pino ]
+[s S2 `*Vuc 1 `*Vuc 1 ]
+[n S2 . latch tris ]
+[s S3 `S1 1 `S1 1 `S1 1 `S1 1 `S1 1 `S1 1 `S2 1 ]
+[n S3 . pinoE pinoRW pinoRS pinoCS1 pinoCS2 pinoRST latchDADOS ]
+"32 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _pinos_display `S3  1 e ]
+"55 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\lcd_grafico.h
+[v _Ponto `(v  0 ef3`uc`uc`uc ]
+"16 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\recursos_texto.h
+[v _EscreveCaractere `(v  0 ef4`uc`uc`uc`uc ]
+[; ;recursos_texto.h: 11: unsigned char Centralizar(unsigned char tamanho_frase);
+[; ;recursos_texto.h: 12: unsigned char JustificarDireita(unsigned char tamanho_frase);
+[; ;recursos_texto.h: 13: unsigned char TamanhoFrase(const char* frase);
+[; ;recursos_texto.h: 14: void Cursor(unsigned char x, unsigned char y, unsigned char cor);
+[; ;recursos_texto.h: 15: void EscreveVariavel(unsigned long variavel, unsigned char x, unsigned char y, unsigned char cor);
+[; ;recursos_texto.h: 16: void EscreveCaractere(unsigned char caractere, unsigned char x, unsigned char y, unsigned char cor);
+[; ;recursos_texto.h: 17: void EscreveFrase(const char* frase, unsigned char x, unsigned char y, unsigned char cor);
+[; ;recursos_texto.c: 1: ;
+"9 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\caracteres.h
+[i _alfabeto
+:U ..
+"10
+-> -> 126 `i `uc
+"11
+-> -> 136 `i `uc
+"12
+-> -> 136 `i `uc
+"13
+-> -> 136 `i `uc
+"14
+-> -> 126 `i `uc
+"16
+-> -> 254 `i `uc
+"17
+-> -> 146 `i `uc
+"18
+-> -> 146 `i `uc
+"19
+-> -> 146 `i `uc
+"20
+-> -> 108 `i `uc
+"22
+-> -> 124 `i `uc
+"23
+-> -> 130 `i `uc
+"24
+-> -> 130 `i `uc
+"25
+-> -> 130 `i `uc
+"26
+-> -> 68 `i `uc
+"28
+-> -> 254 `i `uc
+"29
+-> -> 130 `i `uc
+"30
+-> -> 130 `i `uc
+"31
+-> -> 68 `i `uc
+"32
+-> -> 56 `i `uc
+"34
+-> -> 254 `i `uc
+"35
+-> -> 146 `i `uc
+"36
+-> -> 146 `i `uc
+"37
+-> -> 146 `i `uc
+"38
+-> -> 130 `i `uc
+"40
+-> -> 254 `i `uc
+"41
+-> -> 144 `i `uc
+"42
+-> -> 144 `i `uc
+"43
+-> -> 144 `i `uc
+"44
+-> -> 128 `i `uc
+"46
+-> -> 124 `i `uc
+"47
+-> -> 130 `i `uc
+"48
+-> -> 146 `i `uc
+"49
+-> -> 146 `i `uc
+"50
+-> -> 94 `i `uc
+"52
+-> -> 254 `i `uc
+"53
+-> -> 16 `i `uc
+"54
+-> -> 16 `i `uc
+"55
+-> -> 16 `i `uc
+"56
+-> -> 254 `i `uc
+"58
+-> -> 0 `i `uc
+"59
+-> -> 130 `i `uc
+"60
+-> -> 254 `i `uc
+"61
+-> -> 130 `i `uc
+"62
+-> -> 0 `i `uc
+"64
+-> -> 4 `i `uc
+"65
+-> -> 2 `i `uc
+"66
+-> -> 130 `i `uc
+"67
+-> -> 252 `i `uc
+"68
+-> -> 128 `i `uc
+"70
+-> -> 254 `i `uc
+"71
+-> -> 16 `i `uc
+"72
+-> -> 40 `i `uc
+"73
+-> -> 68 `i `uc
+"74
+-> -> 130 `i `uc
+"76
+-> -> 254 `i `uc
+"77
+-> -> 2 `i `uc
+"78
+-> -> 2 `i `uc
+"79
+-> -> 2 `i `uc
+"80
+-> -> 2 `i `uc
+"82
+-> -> 254 `i `uc
+"83
+-> -> 64 `i `uc
+"84
+-> -> 48 `i `uc
+"85
+-> -> 64 `i `uc
+"86
+-> -> 254 `i `uc
+"88
+-> -> 254 `i `uc
+"89
+-> -> 32 `i `uc
+"90
+-> -> 16 `i `uc
+"91
+-> -> 8 `i `uc
+"92
+-> -> 254 `i `uc
+"94
+-> -> 124 `i `uc
+"95
+-> -> 130 `i `uc
+"96
+-> -> 130 `i `uc
+"97
+-> -> 130 `i `uc
+"98
+-> -> 124 `i `uc
+"100
+-> -> 254 `i `uc
+"101
+-> -> 144 `i `uc
+"102
+-> -> 144 `i `uc
+"103
+-> -> 144 `i `uc
+"104
+-> -> 96 `i `uc
+"106
+-> -> 124 `i `uc
+"107
+-> -> 130 `i `uc
+"108
+-> -> 138 `i `uc
+"109
+-> -> 132 `i `uc
+"110
+-> -> 122 `i `uc
+"112
+-> -> 254 `i `uc
+"113
+-> -> 144 `i `uc
+"114
+-> -> 152 `i `uc
+"115
+-> -> 148 `i `uc
+"116
+-> -> 98 `i `uc
+"118
+-> -> 98 `i `uc
+"119
+-> -> 146 `i `uc
+"120
+-> -> 146 `i `uc
+"121
+-> -> 146 `i `uc
+"122
+-> -> 140 `i `uc
+"124
+-> -> 128 `i `uc
+"125
+-> -> 128 `i `uc
+"126
+-> -> 254 `i `uc
+"127
+-> -> 128 `i `uc
+"128
+-> -> 128 `i `uc
+"130
+-> -> 252 `i `uc
+"131
+-> -> 2 `i `uc
+"132
+-> -> 2 `i `uc
+"133
+-> -> 2 `i `uc
+"134
+-> -> 252 `i `uc
+"136
+-> -> 248 `i `uc
+"137
+-> -> 4 `i `uc
+"138
+-> -> 2 `i `uc
+"139
+-> -> 4 `i `uc
+"140
+-> -> 248 `i `uc
+"142
+-> -> 252 `i `uc
+"143
+-> -> 2 `i `uc
+"144
+-> -> 28 `i `uc
+"145
+-> -> 2 `i `uc
+"146
+-> -> 252 `i `uc
+"148
+-> -> 198 `i `uc
+"149
+-> -> 40 `i `uc
+"150
+-> -> 16 `i `uc
+"151
+-> -> 40 `i `uc
+"152
+-> -> 198 `i `uc
+"154
+-> -> 224 `i `uc
+"155
+-> -> 16 `i `uc
+"156
+-> -> 14 `i `uc
+"157
+-> -> 16 `i `uc
+"158
+-> -> 224 `i `uc
+"160
+-> -> 134 `i `uc
+"161
+-> -> 138 `i `uc
+"162
+-> -> 146 `i `uc
+"163
+-> -> 162 `i `uc
+"164
+-> -> 194 `i `uc
+"168
+-> -> 4 `i `uc
+"169
+-> -> 42 `i `uc
+"170
+-> -> 42 `i `uc
+"171
+-> -> 42 `i `uc
+"172
+-> -> 30 `i `uc
+"174
+-> -> 254 `i `uc
+"175
+-> -> 18 `i `uc
+"176
+-> -> 34 `i `uc
+"177
+-> -> 34 `i `uc
+"178
+-> -> 28 `i `uc
+"180
+-> -> 28 `i `uc
+"181
+-> -> 34 `i `uc
+"182
+-> -> 34 `i `uc
+"183
+-> -> 34 `i `uc
+"184
+-> -> 4 `i `uc
+"186
+-> -> 28 `i `uc
+"187
+-> -> 34 `i `uc
+"188
+-> -> 34 `i `uc
+"189
+-> -> 18 `i `uc
+"190
+-> -> 254 `i `uc
+"192
+-> -> 28 `i `uc
+"193
+-> -> 42 `i `uc
+"194
+-> -> 42 `i `uc
+"195
+-> -> 42 `i `uc
+"196
+-> -> 24 `i `uc
+"198
+-> -> 16 `i `uc
+"199
+-> -> 126 `i `uc
+"200
+-> -> 144 `i `uc
+"201
+-> -> 128 `i `uc
+"202
+-> -> 64 `i `uc
+"204
+-> -> 48 `i `uc
+"205
+-> -> 74 `i `uc
+"206
+-> -> 74 `i `uc
+"207
+-> -> 74 `i `uc
+"208
+-> -> 124 `i `uc
+"210
+-> -> 254 `i `uc
+"211
+-> -> 16 `i `uc
+"212
+-> -> 32 `i `uc
+"213
+-> -> 32 `i `uc
+"214
+-> -> 30 `i `uc
+"216
+-> -> 0 `i `uc
+"217
+-> -> 34 `i `uc
+"218
+-> -> 190 `i `uc
+"219
+-> -> 2 `i `uc
+"220
+-> -> 0 `i `uc
+"222
+-> -> 4 `i `uc
+"223
+-> -> 2 `i `uc
+"224
+-> -> 34 `i `uc
+"225
+-> -> 188 `i `uc
+"226
+-> -> 0 `i `uc
+"228
+-> -> 254 `i `uc
+"229
+-> -> 8 `i `uc
+"230
+-> -> 20 `i `uc
+"231
+-> -> 34 `i `uc
+"232
+-> -> 0 `i `uc
+"234
+-> -> 0 `i `uc
+"235
+-> -> 130 `i `uc
+"236
+-> -> 254 `i `uc
+"237
+-> -> 2 `i `uc
+"238
+-> -> 0 `i `uc
+"240
+-> -> 62 `i `uc
+"241
+-> -> 32 `i `uc
+"242
+-> -> 24 `i `uc
+"243
+-> -> 32 `i `uc
+"244
+-> -> 30 `i `uc
+"246
+-> -> 62 `i `uc
+"247
+-> -> 16 `i `uc
+"248
+-> -> 32 `i `uc
+"249
+-> -> 32 `i `uc
+"250
+-> -> 30 `i `uc
+"252
+-> -> 28 `i `uc
+"253
+-> -> 34 `i `uc
+"254
+-> -> 34 `i `uc
+"255
+-> -> 34 `i `uc
+"256
+-> -> 28 `i `uc
+"258
+-> -> 62 `i `uc
+"259
+-> -> 40 `i `uc
+"260
+-> -> 40 `i `uc
+"261
+-> -> 40 `i `uc
+"262
+-> -> 16 `i `uc
+"264
+-> -> 16 `i `uc
+"265
+-> -> 40 `i `uc
+"266
+-> -> 40 `i `uc
+"267
+-> -> 24 `i `uc
+"268
+-> -> 62 `i `uc
+"270
+-> -> 62 `i `uc
+"271
+-> -> 16 `i `uc
+"272
+-> -> 32 `i `uc
+"273
+-> -> 32 `i `uc
+"274
+-> -> 16 `i `uc
+"276
+-> -> 18 `i `uc
+"277
+-> -> 42 `i `uc
+"278
+-> -> 42 `i `uc
+"279
+-> -> 42 `i `uc
+"280
+-> -> 4 `i `uc
+"282
+-> -> 32 `i `uc
+"283
+-> -> 252 `i `uc
+"284
+-> -> 34 `i `uc
+"285
+-> -> 2 `i `uc
+"286
+-> -> 4 `i `uc
+"288
+-> -> 60 `i `uc
+"289
+-> -> 2 `i `uc
+"290
+-> -> 2 `i `uc
+"291
+-> -> 4 `i `uc
+"292
+-> -> 62 `i `uc
+"294
+-> -> 56 `i `uc
+"295
+-> -> 4 `i `uc
+"296
+-> -> 2 `i `uc
+"297
+-> -> 4 `i `uc
+"298
+-> -> 56 `i `uc
+"300
+-> -> 60 `i `uc
+"301
+-> -> 2 `i `uc
+"302
+-> -> 12 `i `uc
+"303
+-> -> 2 `i `uc
+"304
+-> -> 60 `i `uc
+"306
+-> -> 34 `i `uc
+"307
+-> -> 20 `i `uc
+"308
+-> -> 8 `i `uc
+"309
+-> -> 20 `i `uc
+"310
+-> -> 34 `i `uc
+"312
+-> -> 48 `i `uc
+"313
+-> -> 10 `i `uc
+"314
+-> -> 10 `i `uc
+"315
+-> -> 10 `i `uc
+"316
+-> -> 60 `i `uc
+"318
+-> -> 34 `i `uc
+"319
+-> -> 38 `i `uc
+"320
+-> -> 42 `i `uc
+"321
+-> -> 50 `i `uc
+"322
+-> -> 34 `i `uc
+"325
+-> -> 124 `i `uc
+"326
+-> -> 138 `i `uc
+"327
+-> -> 146 `i `uc
+"328
+-> -> 162 `i `uc
+"329
+-> -> 124 `i `uc
+"331
+-> -> 0 `i `uc
+"332
+-> -> 66 `i `uc
+"333
+-> -> 254 `i `uc
+"334
+-> -> 2 `i `uc
+"335
+-> -> 0 `i `uc
+"337
+-> -> 66 `i `uc
+"338
+-> -> 134 `i `uc
+"339
+-> -> 138 `i `uc
+"340
+-> -> 146 `i `uc
+"341
+-> -> 98 `i `uc
+"343
+-> -> 132 `i `uc
+"344
+-> -> 130 `i `uc
+"345
+-> -> 162 `i `uc
+"346
+-> -> 210 `i `uc
+"347
+-> -> 140 `i `uc
+"349
+-> -> 24 `i `uc
+"350
+-> -> 40 `i `uc
+"351
+-> -> 72 `i `uc
+"352
+-> -> 254 `i `uc
+"353
+-> -> 8 `i `uc
+"355
+-> -> 228 `i `uc
+"356
+-> -> 162 `i `uc
+"357
+-> -> 162 `i `uc
+"358
+-> -> 162 `i `uc
+"359
+-> -> 156 `i `uc
+"361
+-> -> 60 `i `uc
+"362
+-> -> 82 `i `uc
+"363
+-> -> 146 `i `uc
+"364
+-> -> 146 `i `uc
+"365
+-> -> 12 `i `uc
+"367
+-> -> 128 `i `uc
+"368
+-> -> 142 `i `uc
+"369
+-> -> 144 `i `uc
+"370
+-> -> 160 `i `uc
+"371
+-> -> 192 `i `uc
+"373
+-> -> 108 `i `uc
+"374
+-> -> 146 `i `uc
+"375
+-> -> 146 `i `uc
+"376
+-> -> 146 `i `uc
+"377
+-> -> 108 `i `uc
+"379
+-> -> 96 `i `uc
+"380
+-> -> 146 `i `uc
+"381
+-> -> 146 `i `uc
+"382
+-> -> 148 `i `uc
+"383
+-> -> 120 `i `uc
+"387
+-> -> 64 `i `uc
+"388
+-> -> 128 `i `uc
+"389
+-> -> 138 `i `uc
+"390
+-> -> 144 `i `uc
+"391
+-> -> 96 `i `uc
+"393
+-> -> 0 `i `uc
+"394
+-> -> 0 `i `uc
+"395
+-> -> 242 `i `uc
+"396
+-> -> 0 `i `uc
+"397
+-> -> 0 `i `uc
+"399
+-> -> 0 `i `uc
+"400
+-> -> 0 `i `uc
+"401
+-> -> 2 `i `uc
+"402
+-> -> 0 `i `uc
+"403
+-> -> 0 `i `uc
+"405
+-> -> 10 `i `uc
+"406
+-> -> 12 `i `uc
+"407
+-> -> 0 `i `uc
+"408
+-> -> 0 `i `uc
+"409
+-> -> 0 `i `uc
+"411
+-> -> 0 `i `uc
+"412
+-> -> 0 `i `uc
+"413
+-> -> 36 `i `uc
+"414
+-> -> 0 `i `uc
+"415
+-> -> 0 `i `uc
+"417
+-> -> 40 `i `uc
+"418
+-> -> 254 `i `uc
+"419
+-> -> 40 `i `uc
+"420
+-> -> 254 `i `uc
+"421
+-> -> 40 `i `uc
+"423
+-> -> 20 `i `uc
+"424
+-> -> 8 `i `uc
+"425
+-> -> 62 `i `uc
+"426
+-> -> 8 `i `uc
+"427
+-> -> 20 `i `uc
+"429
+-> -> 0 `i `uc
+"430
+-> -> 0 `i `uc
+"431
+-> -> 0 `i `uc
+"432
+-> -> 0 `i `uc
+"433
+-> -> 0 `i `uc
+"435
+-> -> 2 `i `uc
+"436
+-> -> 2 `i `uc
+"437
+-> -> 2 `i `uc
+"438
+-> -> 2 `i `uc
+"439
+-> -> 2 `i `uc
+"441
+-> -> 4 `i `uc
+"442
+-> -> 8 `i `uc
+"443
+-> -> 16 `i `uc
+"444
+-> -> 32 `i `uc
+"445
+-> -> 64 `i `uc
+"447
+-> -> 196 `i `uc
+"448
+-> -> 200 `i `uc
+"449
+-> -> 16 `i `uc
+"450
+-> -> 38 `i `uc
+"451
+-> -> 70 `i `uc
+..
+]
+[; ;caracteres.h: 9: const unsigned char alfabeto[365]={
+[; ;caracteres.h: 10: 0b01111110,
+[; ;caracteres.h: 11: 0b10001000,
+[; ;caracteres.h: 12: 0b10001000,
+[; ;caracteres.h: 13: 0b10001000,
+[; ;caracteres.h: 14: 0b01111110,
+[; ;caracteres.h: 16: 0b11111110,
+[; ;caracteres.h: 17: 0b10010010,
+[; ;caracteres.h: 18: 0b10010010,
+[; ;caracteres.h: 19: 0b10010010,
+[; ;caracteres.h: 20: 0b01101100,
+[; ;caracteres.h: 22: 0b01111100,
+[; ;caracteres.h: 23: 0b10000010,
+[; ;caracteres.h: 24: 0b10000010,
+[; ;caracteres.h: 25: 0b10000010,
+[; ;caracteres.h: 26: 0b01000100,
+[; ;caracteres.h: 28: 0b11111110,
+[; ;caracteres.h: 29: 0b10000010,
+[; ;caracteres.h: 30: 0b10000010,
+[; ;caracteres.h: 31: 0b01000100,
+[; ;caracteres.h: 32: 0b00111000,
+[; ;caracteres.h: 34: 0b11111110,
+[; ;caracteres.h: 35: 0b10010010,
+[; ;caracteres.h: 36: 0b10010010,
+[; ;caracteres.h: 37: 0b10010010,
+[; ;caracteres.h: 38: 0b10000010,
+[; ;caracteres.h: 40: 0b11111110,
+[; ;caracteres.h: 41: 0b10010000,
+[; ;caracteres.h: 42: 0b10010000,
+[; ;caracteres.h: 43: 0b10010000,
+[; ;caracteres.h: 44: 0b10000000,
+[; ;caracteres.h: 46: 0b01111100,
+[; ;caracteres.h: 47: 0b10000010,
+[; ;caracteres.h: 48: 0b10010010,
+[; ;caracteres.h: 49: 0b10010010,
+[; ;caracteres.h: 50: 0b01011110,
+[; ;caracteres.h: 52: 0b11111110,
+[; ;caracteres.h: 53: 0b00010000,
+[; ;caracteres.h: 54: 0b00010000,
+[; ;caracteres.h: 55: 0b00010000,
+[; ;caracteres.h: 56: 0b11111110,
+[; ;caracteres.h: 58: 0b00000000,
+[; ;caracteres.h: 59: 0b10000010,
+[; ;caracteres.h: 60: 0b11111110,
+[; ;caracteres.h: 61: 0b10000010,
+[; ;caracteres.h: 62: 0b00000000,
+[; ;caracteres.h: 64: 0b00000100,
+[; ;caracteres.h: 65: 0b00000010,
+[; ;caracteres.h: 66: 0b10000010,
+[; ;caracteres.h: 67: 0b11111100,
+[; ;caracteres.h: 68: 0b10000000,
+[; ;caracteres.h: 70: 0b11111110,
+[; ;caracteres.h: 71: 0b00010000,
+[; ;caracteres.h: 72: 0b00101000,
+[; ;caracteres.h: 73: 0b01000100,
+[; ;caracteres.h: 74: 0b10000010,
+[; ;caracteres.h: 76: 0b11111110,
+[; ;caracteres.h: 77: 0b00000010,
+[; ;caracteres.h: 78: 0b00000010,
+[; ;caracteres.h: 79: 0b00000010,
+[; ;caracteres.h: 80: 0b00000010,
+[; ;caracteres.h: 82: 0b11111110,
+[; ;caracteres.h: 83: 0b01000000,
+[; ;caracteres.h: 84: 0b00110000,
+[; ;caracteres.h: 85: 0b01000000,
+[; ;caracteres.h: 86: 0b11111110,
+[; ;caracteres.h: 88: 0b11111110,
+[; ;caracteres.h: 89: 0b00100000,
+[; ;caracteres.h: 90: 0b00010000,
+[; ;caracteres.h: 91: 0b00001000,
+[; ;caracteres.h: 92: 0b11111110,
+[; ;caracteres.h: 94: 0b01111100,
+[; ;caracteres.h: 95: 0b10000010,
+[; ;caracteres.h: 96: 0b10000010,
+[; ;caracteres.h: 97: 0b10000010,
+[; ;caracteres.h: 98: 0b01111100,
+[; ;caracteres.h: 100: 0b11111110,
+[; ;caracteres.h: 101: 0b10010000,
+[; ;caracteres.h: 102: 0b10010000,
+[; ;caracteres.h: 103: 0b10010000,
+[; ;caracteres.h: 104: 0b01100000,
+[; ;caracteres.h: 106: 0b01111100,
+[; ;caracteres.h: 107: 0b10000010,
+[; ;caracteres.h: 108: 0b10001010,
+[; ;caracteres.h: 109: 0b10000100,
+[; ;caracteres.h: 110: 0b01111010,
+[; ;caracteres.h: 112: 0b11111110,
+[; ;caracteres.h: 113: 0b10010000,
+[; ;caracteres.h: 114: 0b10011000,
+[; ;caracteres.h: 115: 0b10010100,
+[; ;caracteres.h: 116: 0b01100010,
+[; ;caracteres.h: 118: 0b01100010,
+[; ;caracteres.h: 119: 0b10010010,
+[; ;caracteres.h: 120: 0b10010010,
+[; ;caracteres.h: 121: 0b10010010,
+[; ;caracteres.h: 122: 0b10001100,
+[; ;caracteres.h: 124: 0b10000000,
+[; ;caracteres.h: 125: 0b10000000,
+[; ;caracteres.h: 126: 0b11111110,
+[; ;caracteres.h: 127: 0b10000000,
+[; ;caracteres.h: 128: 0b10000000,
+[; ;caracteres.h: 130: 0b11111100,
+[; ;caracteres.h: 131: 0b00000010,
+[; ;caracteres.h: 132: 0b00000010,
+[; ;caracteres.h: 133: 0b00000010,
+[; ;caracteres.h: 134: 0b11111100,
+[; ;caracteres.h: 136: 0b11111000,
+[; ;caracteres.h: 137: 0b00000100,
+[; ;caracteres.h: 138: 0b00000010,
+[; ;caracteres.h: 139: 0b00000100,
+[; ;caracteres.h: 140: 0b11111000,
+[; ;caracteres.h: 142: 0b11111100,
+[; ;caracteres.h: 143: 0b00000010,
+[; ;caracteres.h: 144: 0b00011100,
+[; ;caracteres.h: 145: 0b00000010,
+[; ;caracteres.h: 146: 0b11111100,
+[; ;caracteres.h: 148: 0b11000110,
+[; ;caracteres.h: 149: 0b00101000,
+[; ;caracteres.h: 150: 0b00010000,
+[; ;caracteres.h: 151: 0b00101000,
+[; ;caracteres.h: 152: 0b11000110,
+[; ;caracteres.h: 154: 0b11100000,
+[; ;caracteres.h: 155: 0b00010000,
+[; ;caracteres.h: 156: 0b00001110,
+[; ;caracteres.h: 157: 0b00010000,
+[; ;caracteres.h: 158: 0b11100000,
+[; ;caracteres.h: 160: 0b10000110,
+[; ;caracteres.h: 161: 0b10001010,
+[; ;caracteres.h: 162: 0b10010010,
+[; ;caracteres.h: 163: 0b10100010,
+[; ;caracteres.h: 164: 0b11000010,
+[; ;caracteres.h: 168: 0b00000100,
+[; ;caracteres.h: 169: 0b00101010,
+[; ;caracteres.h: 170: 0b00101010,
+[; ;caracteres.h: 171: 0b00101010,
+[; ;caracteres.h: 172: 0b00011110,
+[; ;caracteres.h: 174: 0b11111110,
+[; ;caracteres.h: 175: 0b00010010,
+[; ;caracteres.h: 176: 0b00100010,
+[; ;caracteres.h: 177: 0b00100010,
+[; ;caracteres.h: 178: 0b00011100,
+[; ;caracteres.h: 180: 0b00011100,
+[; ;caracteres.h: 181: 0b00100010,
+[; ;caracteres.h: 182: 0b00100010,
+[; ;caracteres.h: 183: 0b00100010,
+[; ;caracteres.h: 184: 0b00000100,
+[; ;caracteres.h: 186: 0b00011100,
+[; ;caracteres.h: 187: 0b00100010,
+[; ;caracteres.h: 188: 0b00100010,
+[; ;caracteres.h: 189: 0b00010010,
+[; ;caracteres.h: 190: 0b11111110,
+[; ;caracteres.h: 192: 0b00011100,
+[; ;caracteres.h: 193: 0b00101010,
+[; ;caracteres.h: 194: 0b00101010,
+[; ;caracteres.h: 195: 0b00101010,
+[; ;caracteres.h: 196: 0b00011000,
+[; ;caracteres.h: 198: 0b00010000,
+[; ;caracteres.h: 199: 0b01111110,
+[; ;caracteres.h: 200: 0b10010000,
+[; ;caracteres.h: 201: 0b10000000,
+[; ;caracteres.h: 202: 0b01000000,
+[; ;caracteres.h: 204: 0b00110000,
+[; ;caracteres.h: 205: 0b01001010,
+[; ;caracteres.h: 206: 0b01001010,
+[; ;caracteres.h: 207: 0b01001010,
+[; ;caracteres.h: 208: 0b01111100,
+[; ;caracteres.h: 210: 0b11111110,
+[; ;caracteres.h: 211: 0b00010000,
+[; ;caracteres.h: 212: 0b00100000,
+[; ;caracteres.h: 213: 0b00100000,
+[; ;caracteres.h: 214: 0b00011110,
+[; ;caracteres.h: 216: 0b00000000,
+[; ;caracteres.h: 217: 0b00100010,
+[; ;caracteres.h: 218: 0b10111110,
+[; ;caracteres.h: 219: 0b00000010,
+[; ;caracteres.h: 220: 0b00000000,
+[; ;caracteres.h: 222: 0b00000100,
+[; ;caracteres.h: 223: 0b00000010,
+[; ;caracteres.h: 224: 0b00100010,
+[; ;caracteres.h: 225: 0b10111100,
+[; ;caracteres.h: 226: 0b00000000,
+[; ;caracteres.h: 228: 0b11111110,
+[; ;caracteres.h: 229: 0b00001000,
+[; ;caracteres.h: 230: 0b00010100,
+[; ;caracteres.h: 231: 0b00100010,
+[; ;caracteres.h: 232: 0b00000000,
+[; ;caracteres.h: 234: 0b00000000,
+[; ;caracteres.h: 235: 0b10000010,
+[; ;caracteres.h: 236: 0b11111110,
+[; ;caracteres.h: 237: 0b00000010,
+[; ;caracteres.h: 238: 0b00000000,
+[; ;caracteres.h: 240: 0b00111110,
+[; ;caracteres.h: 241: 0b00100000,
+[; ;caracteres.h: 242: 0b00011000,
+[; ;caracteres.h: 243: 0b00100000,
+[; ;caracteres.h: 244: 0b00011110,
+[; ;caracteres.h: 246: 0b00111110,
+[; ;caracteres.h: 247: 0b00010000,
+[; ;caracteres.h: 248: 0b00100000,
+[; ;caracteres.h: 249: 0b00100000,
+[; ;caracteres.h: 250: 0b00011110,
+[; ;caracteres.h: 252: 0b00011100,
+[; ;caracteres.h: 253: 0b00100010,
+[; ;caracteres.h: 254: 0b00100010,
+[; ;caracteres.h: 255: 0b00100010,
+[; ;caracteres.h: 256: 0b00011100,
+[; ;caracteres.h: 258: 0b00111110,
+[; ;caracteres.h: 259: 0b00101000,
+[; ;caracteres.h: 260: 0b00101000,
+[; ;caracteres.h: 261: 0b00101000,
+[; ;caracteres.h: 262: 0b00010000,
+[; ;caracteres.h: 264: 0b00010000,
+[; ;caracteres.h: 265: 0b00101000,
+[; ;caracteres.h: 266: 0b00101000,
+[; ;caracteres.h: 267: 0b00011000,
+[; ;caracteres.h: 268: 0b00111110,
+[; ;caracteres.h: 270: 0b00111110,
+[; ;caracteres.h: 271: 0b00010000,
+[; ;caracteres.h: 272: 0b00100000,
+[; ;caracteres.h: 273: 0b00100000,
+[; ;caracteres.h: 274: 0b00010000,
+[; ;caracteres.h: 276: 0b00010010,
+[; ;caracteres.h: 277: 0b00101010,
+[; ;caracteres.h: 278: 0b00101010,
+[; ;caracteres.h: 279: 0b00101010,
+[; ;caracteres.h: 280: 0b00000100,
+[; ;caracteres.h: 282: 0b00100000,
+[; ;caracteres.h: 283: 0b11111100,
+[; ;caracteres.h: 284: 0b00100010,
+[; ;caracteres.h: 285: 0b00000010,
+[; ;caracteres.h: 286: 0b00000100,
+[; ;caracteres.h: 288: 0b00111100,
+[; ;caracteres.h: 289: 0b00000010,
+[; ;caracteres.h: 290: 0b00000010,
+[; ;caracteres.h: 291: 0b00000100,
+[; ;caracteres.h: 292: 0b00111110,
+[; ;caracteres.h: 294: 0b00111000,
+[; ;caracteres.h: 295: 0b00000100,
+[; ;caracteres.h: 296: 0b00000010,
+[; ;caracteres.h: 297: 0b00000100,
+[; ;caracteres.h: 298: 0b00111000,
+[; ;caracteres.h: 300: 0b00111100,
+[; ;caracteres.h: 301: 0b00000010,
+[; ;caracteres.h: 302: 0b00001100,
+[; ;caracteres.h: 303: 0b00000010,
+[; ;caracteres.h: 304: 0b00111100,
+[; ;caracteres.h: 306: 0b00100010,
+[; ;caracteres.h: 307: 0b00010100,
+[; ;caracteres.h: 308: 0b00001000,
+[; ;caracteres.h: 309: 0b00010100,
+[; ;caracteres.h: 310: 0b00100010,
+[; ;caracteres.h: 312: 0b00110000,
+[; ;caracteres.h: 313: 0b00001010,
+[; ;caracteres.h: 314: 0b00001010,
+[; ;caracteres.h: 315: 0b00001010,
+[; ;caracteres.h: 316: 0b00111100,
+[; ;caracteres.h: 318: 0b00100010,
+[; ;caracteres.h: 319: 0b00100110,
+[; ;caracteres.h: 320: 0b00101010,
+[; ;caracteres.h: 321: 0b00110010,
+[; ;caracteres.h: 322: 0b00100010,
+[; ;caracteres.h: 325: 0b01111100,
+[; ;caracteres.h: 326: 0b10001010,
+[; ;caracteres.h: 327: 0b10010010,
+[; ;caracteres.h: 328: 0b10100010,
+[; ;caracteres.h: 329: 0b01111100,
+[; ;caracteres.h: 331: 0b00000000,
+[; ;caracteres.h: 332: 0b01000010,
+[; ;caracteres.h: 333: 0b11111110,
+[; ;caracteres.h: 334: 0b00000010,
+[; ;caracteres.h: 335: 0b00000000,
+[; ;caracteres.h: 337: 0b01000010,
+[; ;caracteres.h: 338: 0b10000110,
+[; ;caracteres.h: 339: 0b10001010,
+[; ;caracteres.h: 340: 0b10010010,
+[; ;caracteres.h: 341: 0b01100010,
+[; ;caracteres.h: 343: 0b10000100,
+[; ;caracteres.h: 344: 0b10000010,
+[; ;caracteres.h: 345: 0b10100010,
+[; ;caracteres.h: 346: 0b11010010,
+[; ;caracteres.h: 347: 0b10001100,
+[; ;caracteres.h: 349: 0b00011000,
+[; ;caracteres.h: 350: 0b00101000,
+[; ;caracteres.h: 351: 0b01001000,
+[; ;caracteres.h: 352: 0b11111110,
+[; ;caracteres.h: 353: 0b00001000,
+[; ;caracteres.h: 355: 0b11100100,
+[; ;caracteres.h: 356: 0b10100010,
+[; ;caracteres.h: 357: 0b10100010,
+[; ;caracteres.h: 358: 0b10100010,
+[; ;caracteres.h: 359: 0b10011100,
+[; ;caracteres.h: 361: 0b00111100,
+[; ;caracteres.h: 362: 0b01010010,
+[; ;caracteres.h: 363: 0b10010010,
+[; ;caracteres.h: 364: 0b10010010,
+[; ;caracteres.h: 365: 0b00001100,
+[; ;caracteres.h: 367: 0b10000000,
+[; ;caracteres.h: 368: 0b10001110,
+[; ;caracteres.h: 369: 0b10010000,
+[; ;caracteres.h: 370: 0b10100000,
+[; ;caracteres.h: 371: 0b11000000,
+[; ;caracteres.h: 373: 0b01101100,
+[; ;caracteres.h: 374: 0b10010010,
+[; ;caracteres.h: 375: 0b10010010,
+[; ;caracteres.h: 376: 0b10010010,
+[; ;caracteres.h: 377: 0b01101100,
+[; ;caracteres.h: 379: 0b01100000,
+[; ;caracteres.h: 380: 0b10010010,
+[; ;caracteres.h: 381: 0b10010010,
+[; ;caracteres.h: 382: 0b10010100,
+[; ;caracteres.h: 383: 0b01111000,
+[; ;caracteres.h: 387: 0b01000000,
+[; ;caracteres.h: 388: 0b10000000,
+[; ;caracteres.h: 389: 0b10001010,
+[; ;caracteres.h: 390: 0b10010000,
+[; ;caracteres.h: 391: 0b01100000,
+[; ;caracteres.h: 393: 0b00000000,
+[; ;caracteres.h: 394: 0b00000000,
+[; ;caracteres.h: 395: 0b11110010,
+[; ;caracteres.h: 396: 0b00000000,
+[; ;caracteres.h: 397: 0b00000000,
+[; ;caracteres.h: 399: 0b00000000,
+[; ;caracteres.h: 400: 0b00000000,
+[; ;caracteres.h: 401: 0b00000010,
+[; ;caracteres.h: 402: 0b00000000,
+[; ;caracteres.h: 403: 0b00000000,
+[; ;caracteres.h: 405: 0b00001010,
+[; ;caracteres.h: 406: 0b00001100,
+[; ;caracteres.h: 407: 0b00000000,
+[; ;caracteres.h: 408: 0b00000000,
+[; ;caracteres.h: 409: 0b00000000,
+[; ;caracteres.h: 411: 0b00000000,
+[; ;caracteres.h: 412: 0b00000000,
+[; ;caracteres.h: 413: 0b00100100,
+[; ;caracteres.h: 414: 0b00000000,
+[; ;caracteres.h: 415: 0b00000000,
+[; ;caracteres.h: 417: 0b00101000,
+[; ;caracteres.h: 418: 0b11111110,
+[; ;caracteres.h: 419: 0b00101000,
+[; ;caracteres.h: 420: 0b11111110,
+[; ;caracteres.h: 421: 0b00101000,
+[; ;caracteres.h: 423: 0b00010100,
+[; ;caracteres.h: 424: 0b00001000,
+[; ;caracteres.h: 425: 0b00111110,
+[; ;caracteres.h: 426: 0b00001000,
+[; ;caracteres.h: 427: 0b00010100,
+[; ;caracteres.h: 429: 0b00000000,
+[; ;caracteres.h: 430: 0b00000000,
+[; ;caracteres.h: 431: 0b00000000,
+[; ;caracteres.h: 432: 0b00000000,
+[; ;caracteres.h: 433: 0b00000000,
+[; ;caracteres.h: 435: 0b00000010,
+[; ;caracteres.h: 436: 0b00000010,
+[; ;caracteres.h: 437: 0b00000010,
+[; ;caracteres.h: 438: 0b00000010,
+[; ;caracteres.h: 439: 0b00000010,
+[; ;caracteres.h: 441: 0b00000100,
+[; ;caracteres.h: 442: 0b00001000,
+[; ;caracteres.h: 443: 0b00010000,
+[; ;caracteres.h: 444: 0b00100000,
+[; ;caracteres.h: 445: 0b01000000,
+[; ;caracteres.h: 447: 0b11000100,
+[; ;caracteres.h: 448: 0b11001000,
+[; ;caracteres.h: 449: 0b00010000,
+[; ;caracteres.h: 450: 0b00100110,
+[; ;caracteres.h: 451: 0b01000110};
+[; ;lcd_grafico.h: 5: typedef struct
+[; ;lcd_grafico.h: 6: {
+[; ;lcd_grafico.h: 7: volatile unsigned char* porta_pino;
+[; ;lcd_grafico.h: 8: volatile unsigned char* latch_pino;
+[; ;lcd_grafico.h: 9: unsigned char bit_pino;
+[; ;lcd_grafico.h: 10: }
+[; ;lcd_grafico.h: 11: InfoPino;
+[; ;lcd_grafico.h: 13: typedef struct
+[; ;lcd_grafico.h: 14: {
+[; ;lcd_grafico.h: 15: volatile unsigned char* latch;
+[; ;lcd_grafico.h: 16: volatile unsigned char* tris;
+[; ;lcd_grafico.h: 17: }
+[; ;lcd_grafico.h: 18: InfoLatch;
+[; ;lcd_grafico.h: 20: typedef struct
+[; ;lcd_grafico.h: 21: {
+[; ;lcd_grafico.h: 22: InfoPino pinoE;
+[; ;lcd_grafico.h: 23: InfoPino pinoRW;
+[; ;lcd_grafico.h: 24: InfoPino pinoRS;
+[; ;lcd_grafico.h: 25: InfoPino pinoCS1;
+[; ;lcd_grafico.h: 26: InfoPino pinoCS2;
+[; ;lcd_grafico.h: 27: InfoPino pinoRST;
+[; ;lcd_grafico.h: 28: InfoLatch latchDADOS;
+[; ;lcd_grafico.h: 29: }
+[; ;lcd_grafico.h: 30: MCUConfig;
+[; ;lcd_grafico.h: 32: MCUConfig pinos_display;
+[; ;lcd_grafico.h: 54: void InverterCores(void);
+[; ;lcd_grafico.h: 55: void Ponto(unsigned char x,unsigned char y,unsigned char apaga);
+[; ;lcd_grafico.h: 56: unsigned char NovoX(unsigned char x,unsigned char area,unsigned char apaga);
+[; ;lcd_grafico.h: 57: void LimparDisplay(void);
+[; ;lcd_grafico.h: 58: void InicializarDisplay(MCUConfig pinos);
+[; ;lcd_grafico.h: 59: void Clock(void);
+[; ;lcd_grafico.h: 60: unsigned char ClockComLeitura(void);
+[; ;lcd_grafico.h: 61: void DesligarDisplay(void);
+[; ;lcd_grafico.h: 62: void LigarDisplay(void);
+[; ;lcd_grafico.h: 63: void EnviarDado(unsigned char dado,unsigned char area);
+[; ;lcd_grafico.h: 64: unsigned char ReceberStatus(void);
+[; ;lcd_grafico.h: 65: unsigned char LerDado(unsigned char area);
+[; ;lcd_grafico.h: 66: void SelecionarArea(unsigned char area);
+[; ;lcd_grafico.h: 67: void EnderecoX(unsigned char x,unsigned char area);
+[; ;lcd_grafico.h: 68: void EnderecoY(unsigned char y,unsigned char area);
+[; ;lcd_grafico.h: 69: void E(unsigned char e);
+[; ;lcd_grafico.h: 70: void RW(unsigned char rw);
+[; ;lcd_grafico.h: 71: void RS(unsigned char rs);
+[; ;lcd_grafico.h: 72: void CS1(unsigned char cs1);
+[; ;lcd_grafico.h: 73: void CS2(unsigned char cs2);
+[; ;lcd_grafico.h: 74: void RST(unsigned char rst);
+[; ;recursos_texto.c: 3: ;
+"12 C:\OD\OneDrive\Pessoal\Projetos para o GitHub\LCD Gráfico\recursos_texto.c
+[v _Centralizar `(uc  1 ef1`uc ]
+{
+[; ;recursos_texto.c: 11: unsigned char Centralizar(unsigned char tamanho_frase)
+[; ;recursos_texto.c: 12: {
+[e :U _Centralizar ]
+[v _tamanho_frase `uc  1 r1 ]
+[f ]
+[; ;recursos_texto.c: 13: return (128 - (tamanho_frase * (5 + 1))) >> 1;
+"13
+[e ) -> >> - -> 128 `i * -> _tamanho_frase `i + -> 5 `i -> 1 `i -> 1 `i `uc ]
+[e $UE 4  ]
+[; ;recursos_texto.c: 14: }
+"14
+[e :UE 4 ]
+}
+"23
+[v _JustificarDireita `(uc  1 ef1`uc ]
+{
+[; ;recursos_texto.c: 22: unsigned char JustificarDireita(unsigned char tamanho_frase)
+[; ;recursos_texto.c: 23: {
+[e :U _JustificarDireita ]
+[v _tamanho_frase `uc  1 r1 ]
+[f ]
+[; ;recursos_texto.c: 24: return 128 - (tamanho_frase * (5 + 1));
+"24
+[e ) -> - -> 128 `i * -> _tamanho_frase `i + -> 5 `i -> 1 `i `uc ]
+[e $UE 5  ]
+[; ;recursos_texto.c: 25: }
+"25
+[e :UE 5 ]
+}
+"34
+[v _TamanhoFrase `(uc  1 ef1`*Cuc ]
+{
+[; ;recursos_texto.c: 33: unsigned char TamanhoFrase(const char* frase)
+[; ;recursos_texto.c: 34: {
+[e :U _TamanhoFrase ]
+[v _frase `*Cuc  1 r1 ]
+[f ]
+"35
+[v _tamanho `uc  1 a ]
+[; ;recursos_texto.c: 35: unsigned char tamanho = 0;
+[e = _tamanho -> -> 0 `i `uc ]
+[; ;recursos_texto.c: 36: while(*frase)
+"36
+[e $U 7  ]
+[e :U 8 ]
+[; ;recursos_texto.c: 37: {
+"37
+{
+[; ;recursos_texto.c: 38: tamanho++;
+"38
+[e ++ _tamanho -> -> 1 `i `uc ]
+[; ;recursos_texto.c: 39: frase++;
+"39
+[e ++ _frase * -> -> 1 `i `x -> -> # *U _frase `i `x ]
+"40
+}
+[e :U 7 ]
+"36
+[e $ != -> *U _frase `i -> -> -> 0 `i `Cuc `i 8  ]
+[e :U 9 ]
+[; ;recursos_texto.c: 40: }
+[; ;recursos_texto.c: 41: return tamanho;
+"41
+[e ) _tamanho ]
+[e $UE 6  ]
+[; ;recursos_texto.c: 42: }
+"42
+[e :UE 6 ]
+}
+"52
+[v _Cursor `(v  1 ef3`uc`uc`uc ]
+{
+[; ;recursos_texto.c: 51: void Cursor(unsigned char x, unsigned char y, unsigned char cor)
+[; ;recursos_texto.c: 52: {
+[e :U _Cursor ]
+[v _x `uc  1 r1 ]
+[v _y `uc  1 r2 ]
+[v _cor `uc  1 r3 ]
+[f ]
+"53
+[v _x_aux `uc  1 a ]
+[; ;recursos_texto.c: 53: unsigned char x_aux;
+[; ;recursos_texto.c: 54: for(x_aux = x; x_aux < (x + 7); x_aux++)
+"54
+{
+[e = _x_aux _x ]
+[e $U 14  ]
+"55
+[e :U 11 ]
+[; ;recursos_texto.c: 55: Ponto(x_aux, y, cor);
+[e ( _Ponto (3 , , _x_aux _y _cor ]
+"54
+[e ++ _x_aux -> -> 1 `i `uc ]
+[e :U 14 ]
+[e $ < -> _x_aux `i + -> _x `i -> 7 `i 11  ]
+[e :U 12 ]
+"55
+}
+[; ;recursos_texto.c: 56: }
+"56
+[e :UE 10 ]
+}
+"67
+[v _EscreveVariavel `(v  1 ef4`ul`uc`uc`uc ]
+{
+[; ;recursos_texto.c: 66: void EscreveVariavel(unsigned long variavel, unsigned char x, unsigned char y, unsigned char cor)
+[; ;recursos_texto.c: 67: {
+[e :U _EscreveVariavel ]
+[v _variavel `ul  1 r1 ]
+[v _x `uc  1 r2 ]
+[v _y `uc  1 r3 ]
+[v _cor `uc  1 r4 ]
+[f ]
+"68
+[v _multiplicacoes `ul  -> 10 `i a ]
+"69
+[v _i `uc  1 a ]
+[v _j `uc  1 a ]
+"70
+[v _resultado `ul  1 a ]
+"71
+[v _mascara `ul  1 a ]
+[; ;recursos_texto.c: 68: unsigned long multiplicacoes[10];
+[; ;recursos_texto.c: 69: unsigned char i, j;
+[; ;recursos_texto.c: 70: unsigned long resultado;
+[; ;recursos_texto.c: 71: unsigned long mascara = 1000000000;
+[e = _mascara -> -> 1000000000 `l `ul ]
+"72
+[v _escreveu `uc  1 a ]
+[; ;recursos_texto.c: 72: unsigned char escreveu=0;
+[e = _escreveu -> -> 0 `i `uc ]
+[; ;recursos_texto.c: 73: for(i = 0; i < 10; i++, mascara /= 10)
+"73
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 10 `i 16  ]
+[e $U 17  ]
+"74
+[e :U 16 ]
+[; ;recursos_texto.c: 74: {
+{
+[; ;recursos_texto.c: 75: resultado = variavel;
+"75
+[e = _resultado _variavel ]
+[; ;recursos_texto.c: 76: for(j = 0; j < i; j++)
+"76
+{
+[e = _j -> -> 0 `i `uc ]
+[e $U 22  ]
+"77
+[e :U 19 ]
+[; ;recursos_texto.c: 77: resultado -= multiplicacoes[j];
+[e =- _resultado *U + &U _multiplicacoes * -> _j `ux -> -> # *U &U _multiplicacoes `ui `ux ]
+"76
+[e ++ _j -> -> 1 `i `uc ]
+[e :U 22 ]
+[e $ < -> _j `i -> _i `i 19  ]
+[e :U 20 ]
+"77
+}
+[; ;recursos_texto.c: 78: resultado /= mascara;
+"78
+[e =/ _resultado _mascara ]
+[; ;recursos_texto.c: 79: multiplicacoes[i] = resultado * mascara;
+"79
+[e = *U + &U _multiplicacoes * -> _i `ux -> -> # *U &U _multiplicacoes `ui `ux * _resultado _mascara ]
+[; ;recursos_texto.c: 80: if(resultado || escreveu || i == (10 - 1))
+"80
+[e $ ! || || != _resultado -> -> 0 `i `ul != -> _escreveu `i -> -> -> 0 `i `uc `i == -> _i `i - -> 10 `i -> 1 `i 23  ]
+[; ;recursos_texto.c: 81: {
+"81
+{
+[; ;recursos_texto.c: 82: EscreveCaractere(resultado + 0x30, x, y, cor);
+"82
+[e ( _EscreveCaractere (4 , , , -> + _resultado -> -> -> 48 `i `l `ul `uc _x _y _cor ]
+[; ;recursos_texto.c: 83: y += (5 + 1);
+"83
+[e =+ _y -> + -> 5 `i -> 1 `i `uc ]
+[; ;recursos_texto.c: 84: escreveu = 1;
+"84
+[e = _escreveu -> -> 1 `i `uc ]
+"85
+}
+[e :U 23 ]
+"86
+}
+"73
+[e ; ++ _i -> -> 1 `i `uc =/ _mascara -> -> 10 `uc `ul ]
+[e $ < -> _i `i -> 10 `i 16  ]
+[e :U 17 ]
+"86
+}
+[; ;recursos_texto.c: 85: }
+[; ;recursos_texto.c: 86: }
+[; ;recursos_texto.c: 87: }
+"87
+[e :UE 15 ]
+}
+"98
+[v _EscreveCaractere `(v  1 ef4`uc`uc`uc`uc ]
+{
+[; ;recursos_texto.c: 97: void EscreveCaractere(unsigned char caractere, unsigned char x, unsigned char y, unsigned char cor)
+[; ;recursos_texto.c: 98: {
+[e :U _EscreveCaractere ]
+[v _caractere `uc  1 r1 ]
+[v _x `uc  1 r2 ]
+[v _y `uc  1 r3 ]
+[v _cor `uc  1 r4 ]
+[f ]
+"99
+[v _ponto `uc  1 a ]
+"100
+[v _mascara `uc  1 a ]
+"101
+[v _x_aux `uc  1 a ]
+[v _y_aux `uc  1 a ]
+"102
+[v _end_alfa `ui  1 a ]
+[; ;recursos_texto.c: 99: unsigned char ponto;
+[; ;recursos_texto.c: 100: unsigned char mascara;
+[; ;recursos_texto.c: 101: unsigned char x_aux, y_aux;
+[; ;recursos_texto.c: 102: unsigned int end_alfa;
+[; ;recursos_texto.c: 105: if(caractere >= '0' && caractere <= '9')
+"105
+[e $ ! && >= -> _caractere `ui -> 48 `ui <= -> _caractere `ui -> 57 `ui 25  ]
+[; ;recursos_texto.c: 106: end_alfa = ((caractere - 48) * 5) + 260;
+"106
+[e = _end_alfa -> + * - -> _caractere `i -> 48 `i -> 5 `i -> 260 `i `ui ]
+[e $U 26  ]
+"107
+[e :U 25 ]
+[; ;recursos_texto.c: 107: else if(caractere >= 'A' && caractere <= 'Z')
+[e $ ! && >= -> _caractere `ui -> 65 `ui <= -> _caractere `ui -> 90 `ui 27  ]
+[; ;recursos_texto.c: 108: end_alfa = (caractere - 'A') * 5;
+"108
+[e = _end_alfa * - -> _caractere `ui -> 65 `ui -> -> 5 `i `ui ]
+[e $U 28  ]
+"109
+[e :U 27 ]
+[; ;recursos_texto.c: 109: else if(caractere >= 'a' && caractere <= 'z')
+[e $ ! && >= -> _caractere `ui -> 97 `ui <= -> _caractere `ui -> 122 `ui 29  ]
+[; ;recursos_texto.c: 110: end_alfa = ((caractere - 'a') + 26 ) * 5;
+"110
+[e = _end_alfa * + - -> _caractere `ui -> 97 `ui -> -> 26 `i `ui -> -> 5 `i `ui ]
+[e $U 30  ]
+"111
+[e :U 29 ]
+[; ;recursos_texto.c: 111: else
+[; ;recursos_texto.c: 112: {
+"112
+{
+[; ;recursos_texto.c: 113: switch(caractere)
+"113
+[e $U 32  ]
+[; ;recursos_texto.c: 114: {
+"114
+{
+[; ;recursos_texto.c: 115: case '?':
+"115
+[e :U 33 ]
+[; ;recursos_texto.c: 116: end_alfa = 310;
+"116
+[e = _end_alfa -> -> 310 `i `ui ]
+[; ;recursos_texto.c: 117: break;
+"117
+[e $U 31  ]
+[; ;recursos_texto.c: 118: case '!':
+"118
+[e :U 34 ]
+[; ;recursos_texto.c: 119: end_alfa = 315;
+"119
+[e = _end_alfa -> -> 315 `i `ui ]
+[; ;recursos_texto.c: 120: break;
+"120
+[e $U 31  ]
+[; ;recursos_texto.c: 121: case '.':
+"121
+[e :U 35 ]
+[; ;recursos_texto.c: 122: end_alfa = 320;
+"122
+[e = _end_alfa -> -> 320 `i `ui ]
+[; ;recursos_texto.c: 123: break;
+"123
+[e $U 31  ]
+[; ;recursos_texto.c: 124: case ',':
+"124
+[e :U 36 ]
+[; ;recursos_texto.c: 125: end_alfa = 325;
+"125
+[e = _end_alfa -> -> 325 `i `ui ]
+[; ;recursos_texto.c: 126: break;
+"126
+[e $U 31  ]
+[; ;recursos_texto.c: 127: case ':':
+"127
+[e :U 37 ]
+[; ;recursos_texto.c: 128: end_alfa = 330;
+"128
+[e = _end_alfa -> -> 330 `i `ui ]
+[; ;recursos_texto.c: 129: break;
+"129
+[e $U 31  ]
+[; ;recursos_texto.c: 130: case '#':
+"130
+[e :U 38 ]
+[; ;recursos_texto.c: 131: end_alfa = 335;
+"131
+[e = _end_alfa -> -> 335 `i `ui ]
+[; ;recursos_texto.c: 132: break;
+"132
+[e $U 31  ]
+[; ;recursos_texto.c: 133: case '*':
+"133
+[e :U 39 ]
+[; ;recursos_texto.c: 134: end_alfa = 340;
+"134
+[e = _end_alfa -> -> 340 `i `ui ]
+[; ;recursos_texto.c: 135: break;
+"135
+[e $U 31  ]
+[; ;recursos_texto.c: 136: case ' ':
+"136
+[e :U 40 ]
+[; ;recursos_texto.c: 137: end_alfa = 345;
+"137
+[e = _end_alfa -> -> 345 `i `ui ]
+[; ;recursos_texto.c: 138: break;
+"138
+[e $U 31  ]
+[; ;recursos_texto.c: 139: case '_':
+"139
+[e :U 41 ]
+[; ;recursos_texto.c: 140: end_alfa = 350;
+"140
+[e = _end_alfa -> -> 350 `i `ui ]
+[; ;recursos_texto.c: 141: break;
+"141
+[e $U 31  ]
+[; ;recursos_texto.c: 142: case '/':
+"142
+[e :U 42 ]
+[; ;recursos_texto.c: 143: end_alfa = 355;
+"143
+[e = _end_alfa -> -> 355 `i `ui ]
+[; ;recursos_texto.c: 144: break;
+"144
+[e $U 31  ]
+[; ;recursos_texto.c: 145: case '%':
+"145
+[e :U 43 ]
+[; ;recursos_texto.c: 146: end_alfa = 360;
+"146
+[e = _end_alfa -> -> 360 `i `ui ]
+[; ;recursos_texto.c: 147: break;
+"147
+[e $U 31  ]
+"148
+}
+[; ;recursos_texto.c: 148: }
+[e $U 31  ]
+"113
+[e :U 32 ]
+[e [\ _caractere , $ -> -> 63 `ui `uc 33
+ , $ -> -> 33 `ui `uc 34
+ , $ -> -> 46 `ui `uc 35
+ , $ -> -> 44 `ui `uc 36
+ , $ -> -> 58 `ui `uc 37
+ , $ -> -> 35 `ui `uc 38
+ , $ -> -> 42 `ui `uc 39
+ , $ -> -> 32 `ui `uc 40
+ , $ -> -> 95 `ui `uc 41
+ , $ -> -> 47 `ui `uc 42
+ , $ -> -> 37 `ui `uc 43
+ 31 ]
+"148
+[e :U 31 ]
+"149
+}
+[e :U 30 ]
+[e :U 28 ]
+[e :U 26 ]
+[; ;recursos_texto.c: 149: }
+[; ;recursos_texto.c: 151: for(y_aux = y; y_aux < (y + 5); y_aux++)
+"151
+{
+[e = _y_aux _y ]
+[e $U 47  ]
+"152
+[e :U 44 ]
+[; ;recursos_texto.c: 152: {
+{
+[; ;recursos_texto.c: 153: mascara=0b10000000;
+"153
+[e = _mascara -> -> 128 `i `uc ]
+[; ;recursos_texto.c: 154: for(x_aux = x; x_aux < (x + 8); x_aux++)
+"154
+{
+[e = _x_aux _x ]
+[e $U 51  ]
+"155
+[e :U 48 ]
+[; ;recursos_texto.c: 155: {
+{
+[; ;recursos_texto.c: 156: ponto = alfabeto[end_alfa] & mascara;
+"156
+[e = _ponto -> & -> *U + &U _alfabeto * -> _end_alfa `ux -> -> # *U &U _alfabeto `ui `ux `i -> _mascara `i `uc ]
+[; ;recursos_texto.c: 157: Ponto(x_aux, y_aux, cor ? ponto : !ponto);
+"157
+[e ( _Ponto (3 , , _x_aux _y_aux -> ? != -> _cor `i -> -> -> 0 `i `uc `i : -> _ponto `i -> ! != -> _ponto `i -> -> -> 0 `i `uc `i `i `uc ]
+[; ;recursos_texto.c: 158: mascara = mascara >> 1;
+"158
+[e = _mascara -> >> -> _mascara `i -> 1 `i `uc ]
+"159
+}
+"154
+[e ++ _x_aux -> -> 1 `i `uc ]
+[e :U 51 ]
+[e $ < -> _x_aux `i + -> _x `i -> 8 `i 48  ]
+[e :U 49 ]
+"159
+}
+[; ;recursos_texto.c: 159: }
+[; ;recursos_texto.c: 160: end_alfa++;
+"160
+[e ++ _end_alfa -> -> 1 `i `ui ]
+"161
+}
+"151
+[e ++ _y_aux -> -> 1 `i `uc ]
+[e :U 47 ]
+[e $ < -> _y_aux `i + -> _y `i -> 5 `i 44  ]
+[e :U 45 ]
+"161
+}
+[; ;recursos_texto.c: 161: }
+[; ;recursos_texto.c: 162: }
+"162
+[e :UE 24 ]
+}
+"173
+[v _EscreveFrase `(v  1 ef4`*Cuc`uc`uc`uc ]
+{
+[; ;recursos_texto.c: 172: void EscreveFrase(const char* frase, unsigned char x, unsigned char y, unsigned char cor)
+[; ;recursos_texto.c: 173: {
+[e :U _EscreveFrase ]
+[v _frase `*Cuc  1 r1 ]
+[v _x `uc  1 r2 ]
+[v _y `uc  1 r3 ]
+[v _cor `uc  1 r4 ]
+[f ]
+[; ;recursos_texto.c: 174: while(*frase)
+"174
+[e $U 53  ]
+[e :U 54 ]
+[; ;recursos_texto.c: 175: {
+"175
+{
+[; ;recursos_texto.c: 176: EscreveCaractere(*frase, x, y, cor);
+"176
+[e ( _EscreveCaractere (4 , , , *U _frase _x _y _cor ]
+[; ;recursos_texto.c: 177: frase++;
+"177
+[e ++ _frase * -> -> 1 `i `x -> -> # *U _frase `i `x ]
+[; ;recursos_texto.c: 178: y += (5 + 1);
+"178
+[e =+ _y -> + -> 5 `i -> 1 `i `uc ]
+"179
+}
+[e :U 53 ]
+"174
+[e $ != -> *U _frase `i -> -> -> 0 `i `Cuc `i 54  ]
+[e :U 55 ]
+[; ;recursos_texto.c: 179: }
+[; ;recursos_texto.c: 180: }
+"180
+[e :UE 52 ]
+}
